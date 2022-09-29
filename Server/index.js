@@ -21,7 +21,7 @@ const start = async () => {
         })
         app.listen(PORT, () => {
             console.log(`Server has been started on port: ${PORT}`)
-            console.log('MongoDB connected')
+            console.log('MongoDB connected!')
         })
 
     } catch (e) {
