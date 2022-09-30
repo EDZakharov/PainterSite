@@ -1,11 +1,9 @@
-module.exports = class AdminDtos {
+module.exports = class userDTO {
     email
     id
-    isAdmin
 
     constructor(model) {
         this.email = model.email
         this.id = model._id
-        this.isAdmin = model.isAdmin
     }
 }

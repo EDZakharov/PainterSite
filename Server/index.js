@@ -4,7 +4,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const router = require('./routes/index')
-
+const errorMiddleware = require('./middleware/error-middleware')
 const mongoose = require('mongoose')
 
 const PORT = process.env.SERVER_PORT || 5000
@@ -16,6 +16,7 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(cors())
 app.use('/api', router)
+app.use(errorMiddleware)
 
 
 const start = async () => {
