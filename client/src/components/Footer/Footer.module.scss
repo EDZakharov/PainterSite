@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+@mixin font{
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+}
+
+@mixin center{
+  //text-align: center;
+  padding: 100px 0 150px;
+  width: 300px;
+}
+
+$grid-border: 0px solid black;
+
+.footer{
+  @include font;
+  font-size: 18px;
+  padding: 8rem 0 2rem;
+  background: rgb(239,240,241);
+  background: linear-gradient(0deg,
+          rgba(239,240,241,1) 5%,
+          rgba(255,255,255,1) 100%);
+
+  .footer__data__wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 1400px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1400px){
+      width: 100vw;
+    }
+
+    ul{
+      list-style-type: none;
+    }
+
+    ul li{
+      text-align: left;
+    }
+
+    .privacy{
+      border: $grid-border;
+      @include center;
+    }
+
+    .info{
+      border: $grid-border;
+      @include center;
+    }
+
+    .gallery{
+      border: $grid-border;
+      @include center;
+    }
+
+    .dzenStyle{
+      border: $grid-border;
+      @include center;
+    }
+  }
+}

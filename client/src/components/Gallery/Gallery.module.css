@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+.gallery {
+  margin-top: 150px;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  font-size: 18px; }
+  .gallery .wrapper {
+    width: 1400px;
+    margin: 0 auto; }
+    .gallery .wrapper .typeList .selection {
+      display: flex; }
+      .gallery .wrapper .typeList .selection span {
+        margin: 0 20px 0 0;
+        cursor: pointer;
+        user-select: none; }
+        .gallery .wrapper .typeList .selection span:hover {
+          color: #c3363a; }
+        .gallery .wrapper .typeList .selection span:active {
+          color: black; }
+      .gallery .wrapper .typeList .selection .active {
+        color: #c3363a;
+        border-bottom: 1px solid #c3363a;
+        transition: .4s all; }
+    .gallery .wrapper .typeList .one {
+      margin-top: 20px;
+      font-size: 0; }
+      .gallery .wrapper .typeList .one img {
+        padding: 5px; }
+    .gallery .wrapper .typeList .two {
+      margin-top: 20px; }
+    .gallery .wrapper .typeList .three {
+      margin-top: 20px; }
+
+/*# sourceMappingURL=Gallery.module.css.map */

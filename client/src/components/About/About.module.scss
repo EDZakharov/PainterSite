@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+@mixin font{
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+}
+
+.aboutWrapper{
+  width: 100%;
+
+  .about{
+    @include font;
+    font-size: 20PX;
+    width: 1400px;
+    margin: 0 auto;
+    padding-top: 150px;
+  }
+}

@@ -4,7 +4,7 @@ const ErrorHandler = require('../exeptions/errorHandler')
 class ImageService {
     async upload(email,image){
         if(!image) {
-            throw ErrorHandler.BadRequest('Адрес картинки не указан')
+            throw ErrorHandler.BadRequest('Error: Формат должен быть jpeg, png или jpg ')
         }
 
         const uploadData = await ImageModel.findOne({name:image.filename})

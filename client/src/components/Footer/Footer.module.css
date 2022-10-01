@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+.footer {
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 8rem 0 2rem;
+  background: #eff0f1;
+  background: linear-gradient(0deg, #eff0f1 5%, white 100%); }
+  .footer .footer__data__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1400px;
+    margin: 0 auto; }
+    @media screen and (max-width: 1400px) {
+      .footer .footer__data__wrapper {
+        width: 100vw; } }
+    .footer .footer__data__wrapper ul {
+      list-style-type: none; }
+    .footer .footer__data__wrapper ul li {
+      text-align: left; }
+    .footer .footer__data__wrapper .privacy {
+      border: 0px solid black;
+      padding: 100px 0 150px;
+      width: 300px; }
+    .footer .footer__data__wrapper .info {
+      border: 0px solid black;
+      padding: 100px 0 150px;
+      width: 300px; }
+    .footer .footer__data__wrapper .gallery {
+      border: 0px solid black;
+      padding: 100px 0 150px;
+      width: 300px; }
+    .footer .footer__data__wrapper .dzenStyle {
+      border: 0px solid black;
+      padding: 100px 0 150px;
+      width: 300px; }
+
+/*# sourceMappingURL=Footer.module.css.map */

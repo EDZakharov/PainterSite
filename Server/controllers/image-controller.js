@@ -17,6 +17,7 @@ class imageController {
         // console.log(req.file)
         try{
             const upload = await ImageService.upload(req.email,req.file)
+            console.log(upload)
             res.status(201).json(upload)
         }catch (e) {
             next(e)
