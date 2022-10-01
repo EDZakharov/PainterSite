@@ -1,9 +1,10 @@
 const Router = require('express').Router
 const UserController = require('../controllers/user-controller')
+const ImageController = require('../controllers/image-controller')
 const router = new Router()
 const {body} = require('express-validator')
 const AuthMiddleware = require('../middleware/auth-middleware')
-
+const upload = require('../middleware/upload-middleware')
 
 router.post('/registration',
     body('email').isEmail(),
@@ -18,5 +19,10 @@ router.post('/logout',
 
 router.get('/refresh',
     UserController.refresh)
+
+router.post('/upload',
+    // AuthMiddleware,
+    upload.single('image'),
+    ImageController.upload)
 
 module.exports = router
