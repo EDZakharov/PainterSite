@@ -16,7 +16,7 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(cors())
 app.use('/api', router)
-app.use('/uploads', express.static('uploads'))
+app.use('/api/images', express.static(__dirname + '/uploads'))
 app.use(errorMiddleware)
 
 

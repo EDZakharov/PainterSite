@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,QAAQ;EACN,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,YAAG;IACD,OAAO,EAAE,IAAI;IACb,eAAe,EAAE,MAAM;IACvB,cAAc,EAAE,MAAM;IACtB,WAAW,EAAE,MAAM;EAErB,eAAM;IACJ,SAAS,EAAE,IAAI;IACf,KAAK,EAAE,KAAK;IACZ,UAAU,EAAE,IAAI",
+"sources": ["Expositions.module.scss"],
 "names": [],
 "file": "Expositions.module.css"
 }

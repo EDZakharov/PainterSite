@@ -6,6 +6,7 @@ import {Routes,Route} from "react-router-dom";
 import {GeneralComponent} from "./components/RouteComponents/RouteComponents";
 import Gallery from "./components/Gallery/Gallery";
 import About from "./components/About/About";
+import Expositions from "./components/Expositions/Expositions";
 
 function App() {
     return (
@@ -24,7 +25,7 @@ function App() {
                     <Route path="3" element={<div><Gallery/>тут будут картинки и описание3</div>}/>
                 </Route>
                 <Route path="/exposition" element={<GeneralComponent/>}>
-                    <Route index element={<div>exposition</div>}/>
+                    <Route index element={<Expositions/>}/>
                 </Route>
                 <Route path="/shop" element={<GeneralComponent/>}>
                     <Route index element={<div>shop</div>}/>

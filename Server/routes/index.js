@@ -25,4 +25,7 @@ router.post('/upload',
     upload.single('image'),
     ImageController.upload)
 
+router.get('/images',
+    ImageController.getImagesList)
+
 module.exports = router
