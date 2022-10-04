@@ -1,31 +1,24 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
+import {imagesApi} from "./redux-query";
 
-const counterSlice = createSlice({
-    name: 'lol',
+const imagesSlice = createSlice({
+    name: 'images',
     initialState: {
-        value: 0,
-        todo:[]
+        data:[]
     },
     reducers: {
-        incremented: (state) => {
-            state.value += 1
-        },
-        decremented: (state) => {
-            state.value -= 1
-        },
-        addTodo: (state,action) => {
-            state.todo.push(action.payload)
-        },
-        delLastTodo: (state) => {
-            state.todo.pop()
-        }
+
     }
 })
 
-export const { incremented, decremented, addTodo, delLastTodo } = counterSlice.actions
+export const {_} = imagesSlice.actions
 
 export const store = configureStore({
-    reducer: counterSlice.reducer
+    reducer: {
+        [imagesApi.reducerPath]: imagesApi.reducer,
+        images: imagesSlice.reducer
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(imagesApi.middleware)
 })
 
-store.subscribe(() => console.log(store.getState()))
+// store.subscribe(() => console.log(store.getState()))
