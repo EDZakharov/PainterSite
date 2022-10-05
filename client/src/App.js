@@ -1,17 +1,21 @@
 import React from "react";
 import './App.scss'
 import General from "./components/MainGeneral/General";
-import Footer from "./components/Footer/Footer";
 import {Routes,Route} from "react-router-dom";
 import {GeneralComponent} from "./components/RouteComponents/RouteComponents";
 import Gallery from "./components/Gallery/Gallery";
 import About from "./components/About/About";
 import Expositions from "./components/Expositions/Expositions";
+import AdminPanel from "./components/Admin-panel/Admin-panel";
 
 function App() {
     return (
         <div className="App">
             <Routes>
+                <Route path="/admin/*" element={<AdminPanel/>}/>
+                <Route path="/" element={<GeneralComponent/>}>
+                    <Route index element={<General/>}/>
+                </Route>
                 <Route path="/painter" element={<GeneralComponent/>}>
                     <Route index element={<General/>}/>
                 </Route>
@@ -31,12 +35,6 @@ function App() {
                     <Route index element={<div>shop</div>}/>
                 </Route>
             </Routes>
-            <Footer/>
-            <div className="git">
-                <a href="https://github.com/EDZakharov">
-                    <i className="fab fa-github"/> Github EDZakharov 2022 г.
-                </a>
-            </div>
         </div>
     );
 }

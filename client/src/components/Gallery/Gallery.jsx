@@ -58,7 +58,19 @@ const Gallery = () => {
     ]
 
     const getJSX = () => {
-        if(isLoading) {return <h2>Загрузка...</h2>}
+        if(isLoading) {return <div className="preloader-wrapper small active">
+            <div className="spinner-layer spinner-green-only">
+                <div className="circle-clipper left">
+                    <div className="circle"></div>
+                </div>
+                <div className="gap-patch">
+                    <div className="circle"></div>
+                </div>
+                <div className="circle-clipper right">
+                    <div className="circle"></div>
+                </div>
+            </div>
+        </div>}
         if(isSuccess) {return data.map(el => {
             return <GalleryVelvet key={el._id} image={el.name} width={'339px'} height={'469px'}/>
         })}

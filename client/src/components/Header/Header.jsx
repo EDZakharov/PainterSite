@@ -11,7 +11,6 @@ const Header = () => {
         {id: 3, href: '/gallery', text: 'Галерея работ'},
         {id: 4, href: '/exposition', text: 'Онлайн выставки'},
         {id: 5, href: '/shop', text: 'Магазин'},
-
     ]
 
     return (
@@ -33,8 +32,6 @@ const Header = () => {
                     <button>Обратная связь</button>
                 </div>
             </section>
-
-
         </header>
     )
 }

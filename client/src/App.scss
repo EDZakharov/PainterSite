@@ -9,23 +9,5 @@
 
 
 .App{
-  .git{
-    background-color: rgb(219, 219, 220);
-    height: 10px;
-    padding: 15px 0;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: Arial,sans-serif;
-    a{
-      text-decoration: none;
-      font-size: 13px;
-      color: black;
-      &:hover{
-        color: #c3363a;
-        transition: .4s;
-      }
-    }
-  }
+
 }
