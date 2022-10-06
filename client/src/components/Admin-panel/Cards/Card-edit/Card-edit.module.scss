@@ -1,0 +1,64 @@
+@mixin flexBtn {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.edit{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin: 50px auto;
+
+  .buttons{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    button{
+      margin: 15px 5px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .edit_btn_del button{
+
+      background-color: #ef7774;
+      @include flexBtn;
+
+      &:hover{
+        background-color: #9e4c4c;
+      }
+    }
+
+    .edit_btn_edit button{
+      background-color: #9ce378;
+      @include flexBtn;
+
+      &:hover{
+        background-color: #648b4b;
+      }
+    }
+
+    .edit_btn_back button{
+      background-color: #78b5e3;
+      @include flexBtn;
+
+      &:hover{
+        background-color: #49738e;
+      }
+    }
+
+  }
+
+  .edit_form{
+    width: 100%;
+    
+    button{
+      background-color: #5f5d5d;
+    }
+  }
+
+
+}

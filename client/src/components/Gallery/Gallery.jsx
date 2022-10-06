@@ -5,18 +5,8 @@ import {useGetImagesQuery, useSetImageMutation} from '../../redux/redux-query'
 import {useState} from "react";
 
 const Gallery = () => {
-    const [fileData, setFileData] = useState("")
+
     const {data = [], isLoading, isSuccess, isError} = useGetImagesQuery()
-
-    const fileChangeHandler = (e) => {
-        setFileData(e.target.files[0]);
-    }
-    const [setImages] = useSetImageMutation()
-    const onSubmitHandler = (e) => {
-        e.preventDefault()
-        setImages(fileData)
-    };
-
 
     let [link1State, setLink1State] = useState(true)
     let [link2State, setLink2State] = useState(false)
@@ -87,15 +77,6 @@ const Gallery = () => {
                     </div>{isError ? <h2>Ошибка заргузки картинок</h2> : getJSX()}
                     {link2State && <div className={style.two}>В разработке...</div>}
                     {link3State && <div className={style.three}>В разработке...</div>}
-                    <div className="container">
-                        <h1>File Upload</h1>
-                        <form onSubmit={onSubmitHandler} name="image">
-                            <input type="file" onChange={fileChangeHandler}/>
-                            <button type="submit" className="profile-order-button">
-                                Загрузить на сервер
-                            </button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>

@@ -20,12 +20,21 @@ router.post('/logout',
 router.get('/refresh',
     UserController.refresh)
 
+router.get('/images',
+    ImageController.getImagesList)
+
 router.post('/upload',
     // AuthMiddleware,
     upload.single('image'),
     ImageController.upload)
 
-router.get('/images',
-    ImageController.getImagesList)
+router.delete('/delete',
+    // AuthMiddleware,
+    ImageController.delete)
+
+router.patch('/patch',
+    ImageController.patch)
+
+
 
 module.exports = router

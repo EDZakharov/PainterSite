@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import style from './Routes.module.scss'
 
 export const GeneralComponent = () => {
+    localStorage.removeItem('currentEditImagePath')
     return (
         <>
             <Header/>

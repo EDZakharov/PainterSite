@@ -1,15 +1,10 @@
+
+const diff = require('../service/diff-arr')
 const multer = require('multer')
 const moment = require('moment')
 const ImageModel = require('../models/image-model')
 const fs = require('fs')
 const path = require('path')
-
-
-const diff = function (a1, a2) {
-    return a1.filter(i => !a2.includes(i))
-        .concat(a2.filter(i => !a1.includes(i)))
-}
-
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
