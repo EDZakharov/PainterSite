@@ -22,6 +22,7 @@ class imageController {
     }
 
     async delete(req,res,next) {
+
         try{
             await ImageService.delete(req.body.name)
             const imagesList = await ImageService.getImagesList()

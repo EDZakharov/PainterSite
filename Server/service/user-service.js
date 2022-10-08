@@ -69,11 +69,8 @@ class UserService {
 
         const candidate = await UserModel.findOne({id:userData.id})
         const userDTOs = new userDTO(candidate)
-
         const tokens = tokenService.generateTokens({...userDTOs})
         await tokenService.saveToken(userDTOs.id, tokens.refreshToken)
-
-
 
         return {
             ...tokens,

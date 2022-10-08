@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './Admin.css'
 import Cards from "./Cards/Cards";
-import {Route, Routes} from "react-router-dom";
 import RoutesOutlet from "./Routes";
 import CardEdit from "./Cards/Card-edit/Card-edit";
+import {Route, Routes} from "react-router-dom";
 
 const AdminPanel = () => {
-
     return (
-        <div>
+        <>
             <Routes>
                 <Route path="/" element={<RoutesOutlet/>}>
                     <Route index element={<Cards/>}/>
@@ -21,7 +20,7 @@ const AdminPanel = () => {
                     <Route index element={<div>Bio</div>}/>
                 </Route>
             </Routes>
-        </div>
+        </>
     )
 };
 

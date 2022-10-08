@@ -21,18 +21,20 @@ router.get('/refresh',
     UserController.refresh)
 
 router.get('/images',
+    AuthMiddleware,
     ImageController.getImagesList)
 
 router.post('/upload',
-    // AuthMiddleware,
+    AuthMiddleware,
     upload.single('image'),
     ImageController.upload)
 
 router.delete('/delete',
-    // AuthMiddleware,
+    AuthMiddleware,
     ImageController.delete)
 
 router.patch('/patch',
+    AuthMiddleware,
     ImageController.patch)
 
 

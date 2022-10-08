@@ -14,7 +14,12 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(morgan('dev'))
-app.use(cors())
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
+
+}))
 app.use('/api', router)
 app.use('/api/images', express.static(__dirname + '/uploads'))
 app.use(errorMiddleware)

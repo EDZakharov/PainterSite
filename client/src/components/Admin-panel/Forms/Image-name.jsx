@@ -1,15 +1,13 @@
 import React from 'react';
 
-const ImageName = () => {
+const ImageName = ({textChangeHandler, textHandler}) => {
     return (
-        <form className="input">
-            <div className="row">
-                <div className="input-field">
-                    <input id="image_name" type="text" className="validate"/>
-                    <label htmlFor="image_name">Введите название изображения</label>
-                </div>
-            </div>
-        </form>
+        <div className="input-field" >
+            <input id="image_name" type="text" className="validate"
+                   onChange={textChangeHandler}
+                   ref={textHandler}/>
+            <label htmlFor="image_name">Введите название изображения</label>
+        </div>
     );
 };
 

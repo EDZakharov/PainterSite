@@ -1,8 +1,8 @@
 import React from "react";
 import style from './Gallery.module.scss'
 import GalleryVelvet from "../GalleryVelvet/GalleryVelvet";
-import {useGetImagesQuery, useSetImageMutation} from '../../redux/redux-query'
 import {useState} from "react";
+import {useGetImagesQuery} from "../../redux/api";
 
 const Gallery = () => {
 

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import style from './Card-edit.module.scss'
 import PATH from "../../../../SERV_PATH";
-import {useNavigate} from "react-router";
-import {useChangeImageDescriptionMutation, useDelImageMutation} from "../../../../redux/redux-query";
+import {useNavigate} from "react-router-dom";
+import {useChangeImageDescriptionMutation, useDelImageMutation} from "../../../../redux/api";
 
 
 const CardEdit = () => {
@@ -35,11 +35,9 @@ const CardEdit = () => {
         setText(e.target.value)
     }
 
-
-
     return (
         <div className={style.edit}>
-            <img alt="image" src={`${PATH}images/` + imageLocalPath.name} height={'369px'}/>
+            <img alt={imageLocalPath.name} src={`${PATH}images/` + imageLocalPath.name} height={'369px'}/>
             <div className={style.buttons}>
                 <div className={style.edit_btn_del}>
                     <button className="btn waves-effect waves-light"

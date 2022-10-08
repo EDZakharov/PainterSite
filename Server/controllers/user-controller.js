@@ -25,7 +25,7 @@ class UserController {
             const {email, password} = req.body
             const userData = await UserService.login(email,password)
             if(userData){
-                res.cookie('refreshToken', userData.refreshToken,{httpOnly: true})
+                res.cookie('refreshToken', userData.refreshToken, {httpOnly: true})
                 res.status(200).json(userData)
             }
         }catch (e) {
@@ -49,6 +49,7 @@ class UserController {
             const {refreshToken} = req.cookies
             const token = await UserService.refresh(refreshToken)
             res.cookie('refreshToken', token.refreshToken,{httpOnly: true})
+            // res.setHeader('Access-Control-Allow-Headers')
             res.status(200).json(token)
         }catch (e) {
             next(e)

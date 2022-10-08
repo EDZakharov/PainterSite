@@ -1,12 +1,15 @@
 import React from 'react';
-import {Outlet} from "react-router";
 import AdminHeader from "./Header/Admin-Header";
+import {Outlet} from "react-router-dom";
+import Auth from "./Auth/Auth";
 
 const RoutesOutlet = () => {
     return (
         <div>
-            <AdminHeader/>
-            <Outlet/>
+            <Auth>
+                <AdminHeader/>
+                <Outlet/>
+            </Auth>
         </div>
     );
 };

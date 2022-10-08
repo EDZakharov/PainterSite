@@ -1,10 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useGetImagesQuery, useSetImageMutation} from "../../../redux/redux-query";
-import {useNavigate} from "react-router";
+import React, {useRef, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import {setCurrentPath} from "../../../redux/toolkit";
 import {useDispatch} from "react-redux";
 import Card from "./Card/Card";
 import CardAdd from "./Card-add/Card-add";
+import {useGetImagesQuery, useSetImageMutation} from "../../../redux/api";
 
 const CardWrapper = ({image}) => {
     const navigateTo = useNavigate();
@@ -31,12 +31,12 @@ const CardWrapper = ({image}) => {
 
 
 const Cards = () => {
-
-    const {data = [], isLoading, isSuccess, isError} = useGetImagesQuery()
+    const {data = [], isSuccess} = useGetImagesQuery()
     const [fileData, setFileData] = useState(null)
     const [description, setDescription] = useState('')
     const [setImage] = useSetImageMutation()
     const buttonHandler = useRef()
+    const buttonHandler2 = useRef()
     const textHandler = useRef()
     const onSubmitHandler = (e) => {
         e.preventDefault()
@@ -48,12 +48,14 @@ const Cards = () => {
             setImage(dto)
         }
         buttonHandler.current.value = null;
+        buttonHandler2.current.value = "Выберите файл..."
         textHandler.current.value = ''
         setFileData(null)
     };
 
     const fileChangeHandler = (e) => {
         setFileData(e.target.files[0]);
+        buttonHandler2.current.value = e.target.files[0].name
     }
 
     const textChangeHandler = (e) => {
@@ -66,6 +68,7 @@ const Cards = () => {
                      fileChangeHandler={fileChangeHandler}
                      textChangeHandler={textChangeHandler}
                      buttonHandler={buttonHandler}
+                     buttonHandler2={buttonHandler2}
                      textHandler={textHandler}/>
             <div className='card-wrapper'>
                 <div className='card-wrapper-center'>

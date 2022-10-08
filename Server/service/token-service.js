@@ -34,8 +34,8 @@ class TokenService {
     
     async validateAccessToken(accessToken) {
         try{
-            const userData = JWT.verify(accessToken,process.env.ADMIN_ACCESS_JWT)
-            return userData
+            const data = JWT.verify(accessToken, process.env.ADMIN_ACCESS_JWT)
+            return data
         }catch (e) {
             return null
         }
@@ -43,8 +43,8 @@ class TokenService {
 
     async validateRefreshToken(refreshToken) {
         try{
-            const userData = JWT.verify(refreshToken,process.env.ADMIN_REFRESH_JWT)
-            return userData
+            const data = JWT.verify(refreshToken, process.env.ADMIN_REFRESH_JWT)
+            return data
         }catch (e) {
             return null
         }
