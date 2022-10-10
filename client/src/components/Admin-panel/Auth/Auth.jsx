@@ -6,11 +6,12 @@ import {useSelector} from "react-redux";
 
 const Auth = ({children}) => {
     const token = useSelector(state => state.adminPanel.accessToken)
+    const auth = useSelector(state => state.adminPanel.auth)
     const localToken = localStorage.getItem('accessToken')
 
     useEffect(() => {
 
-    },[localToken])
+    },[token,localToken,auth])
 
 
     if (!token && !localToken) {

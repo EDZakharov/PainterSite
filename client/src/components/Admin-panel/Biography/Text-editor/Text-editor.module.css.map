@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAU;EACR,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EAGT,gCAAM;IACJ,MAAM,EAAE,IAAI;IACZ,OAAO,EAAE,GAAG;EAOhB,oBAAS;IACP,KAAK,EAAE,IAAI;IACX,MAAM,EAAE,KAAK;IACb,SAAS,EAAE,IAAI;EAGjB,gBAAK;IACH,SAAS,EAAE,IAAI",
+"sources": ["Text-editor.module.scss"],
+"names": [],
+"file": "Text-editor.module.css"
+}

@@ -1,0 +1,7 @@
+.header a {
+  font-size: 20px;
+  text-transform: uppercase; }
+  .header a:active {
+    background-color: #bb6d6d; }
+
+/*# sourceMappingURL=AdminHeader.module.css.map */

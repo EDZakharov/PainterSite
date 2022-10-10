@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import Card from "./Card/Card";
 import CardAdd from "./Card-add/Card-add";
 import {useGetImagesQuery, useSetImageMutation} from "../../../redux/api";
+import style from './Cards.module.scss'
 
 const CardWrapper = ({image}) => {
     const navigateTo = useNavigate();
@@ -40,10 +41,10 @@ const Cards = () => {
     const textHandler = useRef()
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        if(fileData !== null) {
+        if (fileData !== null) {
             const dto = {
-                file:fileData,
-                description
+                file: fileData,
+                description: description
             }
             setImage(dto)
         }
@@ -59,21 +60,22 @@ const Cards = () => {
     }
 
     const textChangeHandler = (e) => {
+        setValue(e.target.value)
         setDescription(e.target.value)
     }
 
+    const [value, setValue] = useState('')
     return (
-        <div>
+        <div className={style.cards}>
             <CardAdd onSubmitHandler={onSubmitHandler}
                      fileChangeHandler={fileChangeHandler}
                      textChangeHandler={textChangeHandler}
                      buttonHandler={buttonHandler}
                      buttonHandler2={buttonHandler2}
-                     textHandler={textHandler}/>
-            <div className='card-wrapper'>
-                <div className='card-wrapper-center'>
-                    {isSuccess && data.map(el => (<CardWrapper key={el._id} image={el}/>))}
-                </div>
+                     textHandler={textHandler}
+                     value={value}/>
+            <div className={style.cardsWrapper}>
+                {isSuccess && data.map(el => (<CardWrapper key={el._id} image={el}/>))}
             </div>
         </div>
 

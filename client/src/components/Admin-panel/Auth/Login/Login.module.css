@@ -1,0 +1,21 @@
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .login h4 {
+    margin: 30px auto;
+    text-align: center;
+    width: 430px;
+    font-style: italic;
+    font-weight: 600; }
+  .login input[type=text] {
+    font-size: 20px; }
+  .login .button {
+    margin-top: 20px;
+    background-color: #444343; }
+    .login .button:hover {
+      background-color: #6f6f6f; }
+
+/*# sourceMappingURL=Login.module.css.map */

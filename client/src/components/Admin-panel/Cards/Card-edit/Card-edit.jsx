@@ -3,6 +3,7 @@ import style from './Card-edit.module.scss'
 import PATH from "../../../../SERV_PATH";
 import {useNavigate} from "react-router-dom";
 import {useChangeImageDescriptionMutation, useDelImageMutation} from "../../../../redux/api";
+import EditButtons from "../../../Buttons/Edit-Buttons";
 
 
 const CardEdit = () => {
@@ -17,13 +18,16 @@ const CardEdit = () => {
         if (!imageLocalPath) {
             return navigateTo(`/admin`)
         }
-    },[])
-
-    // console.log(`${PATH}images/` + imageLocalPath.name)
+    },[imageLocalPath,navigateTo])
 
     const onButtonDel = () => {
         delImage(imageLocalPath.name)
         isSuccess && navigateTo(`/admin`)
+    }
+
+    const onButtonEdit = (e) => {
+        e.preventDefault()
+        setOpen(!open)
     }
 
     const onSubmitHandler = () => {
@@ -39,33 +43,15 @@ const CardEdit = () => {
         <div className={style.edit}>
             <img alt={imageLocalPath.name} src={`${PATH}images/` + imageLocalPath.name} height={'369px'}/>
             <div className={style.buttons}>
-                <div className={style.edit_btn_del}>
-                    <button className="btn waves-effect waves-light"
-                            type="submit"
-                            name="action"
-                            onClick={onButtonDel}>
-                        <i className="material-icons">Удалить</i>
-                    </button>
-                </div>
-                <div className={style.edit_btn_edit}>
-                    <button className="btn waves-effect waves-light"
-                            type="submit"
-                            name="action"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                setOpen(!open)
-                            }}>
-                        <i className="material-icons">Редактировать</i>
-                    </button>
-                </div>
-                <div className={style.edit_btn_back}>
-                    <button className="btn waves-effect waves-light"
-                            type="submit"
-                            name="action"
-                            onClick={() => navigateTo(`/admin`)}>
-                        <i className="material-icons">Назад</i>
-                    </button>
-                </div>
+                <EditButtons className={style.edit_btn_del}
+                             onclick={onButtonDel}
+                             tittle={"Удалить"}/>
+                <EditButtons className={style.edit_btn_edit}
+                             onclick={onButtonEdit}
+                             tittle={"Редактировать"}/>
+                <EditButtons className={style.edit_btn_back}
+                             onclick={() => navigateTo(`/admin`)}
+                             tittle={"Назад"}/>
             </div>
             <div className={style.edit_form}>
                 {open && <div>
@@ -75,9 +61,6 @@ const CardEdit = () => {
                             <label htmlFor="text">Введите описание</label>
                         </div>
                         <button className="btn waves-effect waves-light" type="submit" name="action"><i className="material-icons">Отправить</i></button>
-                        {/*<button type="submit" className="profile-order-button" >*/}
-                        {/*    */}
-                        {/*</button>*/}
                     </form>
                 </div>}
             </div>

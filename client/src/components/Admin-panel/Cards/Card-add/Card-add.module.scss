@@ -8,12 +8,12 @@
   align-items: center;
   border: 1px solid #9d9d9e;
   border-radius: 3px;
-  background-color: #26a59a;
+  background-color: #767676;
   color: white;
   transition: 0.3s ease-out all;
   padding: 15px;
   &:hover{
-    background-color: #2fc9bb;
+    background-color: #939393;
   }
   input[type=file] {
     opacity: 0;
@@ -46,5 +46,9 @@
   }
 }
 .button {
-  margin-top: 10px;
+  margin: 10px 0 20px;
+  background-color: #767676;
+  &:hover{
+    background-color: #939393;
+  }
 }

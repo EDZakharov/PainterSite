@@ -4,7 +4,9 @@ const adminPanel = createSlice({
     name: 'adminPanel',
     initialState: {
         accessToken: false,
-        auth: false
+        auth: false,
+        isLogoutStatus: false,
+        biography: ''
     },
     reducers: {
         setCurrentPath: (state, action) => {
@@ -37,10 +39,14 @@ const adminPanel = createSlice({
             localStorage.removeItem('accessToken')
             state.accessToken = false
             state.auth = false
+            state.isLogoutStatus = true
+        },
+        setBiography: (state,action) => {
+            state.biography = action.payload
         }
     }
 })
 
 export default adminPanel
 
-export const {setCurrentPath,setLocalToken,resetLocalToken,logout} = adminPanel.actions
+export const {setBiography,setCurrentPath,setLocalToken,resetLocalToken,logout} = adminPanel.actions

@@ -1,9 +1,7 @@
 import {createApi, fetchBaseQuery, retry} from "@reduxjs/toolkit/dist/query/react";
 import PATH from "../SERV_PATH";
-import {logout, resetLocalToken, setLocalToken} from "./toolkit";
+import {logout, resetLocalToken, setBiography, setLocalToken} from "./toolkit";
 import { Mutex } from 'async-mutex'
-// myPass:12345
-
 
 const mutex = new Mutex()
 
@@ -22,9 +20,10 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
 })
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
+
     await mutex.waitForUnlock()
-    if(api.endpoint === 'logout') {
-        api.dispatch(logout())
+    if(api.endpoint === 'getBio') {
+
     }
     let result = await staggeredBaseQuery(args, api, extraOptions)
 
@@ -70,7 +69,7 @@ const workspace = api.injectEndpoints({
         login: build.mutation({
             query: ({email, password}) => ({
                 url: 'login',
-                method: 'post',
+                method: 'POST',
                 body: {email, password},
             }),
             invalidatesTags: ["apiData"],
@@ -88,7 +87,7 @@ const workspace = api.injectEndpoints({
         logout: build.mutation({
             query: () => ({
                 url: 'logout',
-                method: 'post',
+                method: 'POST',
             }),
             invalidatesTags: ["apiData"],
             providesTags: (result) =>
@@ -106,7 +105,7 @@ const workspace = api.injectEndpoints({
         refresh: build.query({
             query: () => ({
                 url: 'refresh',
-                method: 'get',
+                method: 'GET',
             }),
             invalidatesTags: ["apiData"],
             providesTags: (result) =>
@@ -119,6 +118,21 @@ const workspace = api.injectEndpoints({
                     ]
                     : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
                     [{type: 'apiData', id: 'LIST'}],
+        }),
+        getBio: build.query({
+            query: () => ({
+                url: 'biography',
+                method: 'GET',
+            }),
+            invalidatesTags: ["apiData"],
+        }),
+        patchBio: build.mutation({
+            query: (body) => ({
+                url: 'patchBio',
+                method: 'PATCH',
+                body,
+            }),
+            invalidatesTags: ["apiData"],
         }),
         getImages: build.query({
             query: () => 'images',
@@ -214,5 +228,5 @@ const workspace = api.injectEndpoints({
     })
 })
 
-export const {useLoginMutation, useLogoutMutation, useGetImagesQuery, useSetImageMutation, useDelImageMutation, useChangeImageDescriptionMutation} = workspace;
+export const {usePatchBioMutation, useGetBioQuery, useLoginMutation, useLogoutMutation, useGetImagesQuery, useSetImageMutation, useDelImageMutation, useChangeImageDescriptionMutation} = workspace;
 

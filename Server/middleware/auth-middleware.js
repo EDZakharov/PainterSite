@@ -2,7 +2,6 @@ const ErrorHandler = require('../exeptions/errorHandler')
 const tokenService = require('../service/token-service')
 
 module.exports = function (req,res,next) {
-    console.log(req.headers.authorization)
     try {
         const authHeader = req.headers.authorization
         if(!authHeader) {

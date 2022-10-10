@@ -1,20 +1,20 @@
 import React from 'react';
 import PATH from "../../../../SERV_PATH";
+import style from './Card.module.scss'
+
 
 const Card = ({spanEditClickHandler, name, imageSplitName, description}) => {
     return (
-        <div className="card">
-            <div className="card-image">
+        <div className={style.card}>
+            <div className={style.card_image}>
                 <img src={`${PATH}images/` + name} height={'269px'}/>
-                <span className="card-title">
-                    <span className="text">{imageSplitName[2]}</span>
-                </span>
+                <span className={style.card_tittle}>{imageSplitName[2]}</span>
             </div>
-            <div className="card-content">
-                <p>{description}</p>
+            <div className={style.card_content}>
+                <div className={style.content_description}>{description}</div>
             </div>
-            <div className="card-action">
-                <span onClick={spanEditClickHandler}>Редактировать</span>
+            <div className={style.action}>
+                <span onClick={spanEditClickHandler} className={style.action_button}>Редактировать</span>
             </div>
         </div>
     );
