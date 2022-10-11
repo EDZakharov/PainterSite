@@ -6,6 +6,7 @@ import Card from "./Card/Card";
 import CardAdd from "./Card-add/Card-add";
 import {useGetImagesQuery, useSetImageMutation} from "../../../redux/api";
 import style from './Cards.module.scss'
+import Preloader from "../../all/Preloader";
 
 const CardWrapper = ({image}) => {
     const navigateTo = useNavigate();
@@ -32,8 +33,9 @@ const CardWrapper = ({image}) => {
 
 
 const Cards = () => {
-    const {data = [], isSuccess} = useGetImagesQuery()
+    const {data = [], isSuccess, isLoading} = useGetImagesQuery()
     const [fileData, setFileData] = useState(null)
+    const [value, setValue] = useState('')
     const [description, setDescription] = useState('')
     const [setImage] = useSetImageMutation()
     const buttonHandler = useRef()
@@ -51,6 +53,7 @@ const Cards = () => {
         buttonHandler.current.value = null;
         buttonHandler2.current.value = "Выберите файл..."
         textHandler.current.value = ''
+        setValue('')
         setFileData(null)
     };
 
@@ -64,7 +67,7 @@ const Cards = () => {
         setDescription(e.target.value)
     }
 
-    const [value, setValue] = useState('')
+
     return (
         <div className={style.cards}>
             <CardAdd onSubmitHandler={onSubmitHandler}
@@ -74,9 +77,10 @@ const Cards = () => {
                      buttonHandler2={buttonHandler2}
                      textHandler={textHandler}
                      value={value}/>
-            <div className={style.cardsWrapper}>
+            {isLoading? <Preloader/> : <div className={style.cardsWrapper}>
                 {isSuccess && data.map(el => (<CardWrapper key={el._id} image={el}/>))}
-            </div>
+            </div>}
+
         </div>
 
     );

@@ -21,8 +21,11 @@ const CardEdit = () => {
     },[imageLocalPath,navigateTo])
 
     const onButtonDel = () => {
-        delImage(imageLocalPath.name)
-        isSuccess && navigateTo(`/admin`)
+        const conf = window.confirm(`Вы точно уверены? Нажимая "OK" картинка удалится навсегда!`)
+        if(conf){
+            delImage(imageLocalPath.name)
+            isSuccess && navigateTo(`/admin`)
+        }
     }
 
     const onButtonEdit = (e) => {

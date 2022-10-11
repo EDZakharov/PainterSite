@@ -1,14 +1,102 @@
-.divViewer {
-  width: 80%;
-  height: 70%; }
-  .divViewer .divViewer_btn button {
-    margin: 20px;
-    padding: 5px; }
-  .divViewer .textArea {
-    width: 100%;
-    height: 300px;
-    font-size: 24px; }
-  .divViewer .root {
-    font-size: 24px; }
+.divViewer_wrapper {
+  width: 100%;
+  height: 100vh; }
+  .divViewer_wrapper .divViewer {
+    display: flex;
+    flex-direction: column; }
+    .divViewer_wrapper .divViewer h1 {
+      text-align: center;
+      font-style: italic;
+      font-weight: 500; }
+    .divViewer_wrapper .divViewer .divViewer_selectors {
+      display: flex;
+      gap: 20px;
+      height: 40px;
+      align-items: center;
+      justify-content: center; }
+      .divViewer_wrapper .divViewer .divViewer_selectors .divViewer_bold_button {
+        padding: 5px;
+        align-self: end;
+        font-weight: bold;
+        width: 40px;
+        font-style: italic;
+        font-size: 24px;
+        text-transform: uppercase;
+        background-color: #797979;
+        border: none;
+        box-shadow: 0 0 5px #656565;
+        color: white;
+        transition: .4s all; }
+        .divViewer_wrapper .divViewer .divViewer_selectors .divViewer_bold_button:hover {
+          background-color: #a0a0a0; }
+      .divViewer_wrapper .divViewer .divViewer_selectors .divViewer_BR_button {
+        display: flex;
+        padding: 5px;
+        align-self: end;
+        font-weight: bold;
+        width: 40px;
+        font-style: italic;
+        font-size: 24px;
+        text-transform: uppercase;
+        background-color: #797979;
+        border: none;
+        box-shadow: 0 0 5px #656565;
+        color: white;
+        transition: .4s all; }
+        .divViewer_wrapper .divViewer .divViewer_selectors .divViewer_BR_button:hover {
+          background-color: #a0a0a0; }
+      .divViewer_wrapper .divViewer .divViewer_selectors input[type="color"] {
+        width: 50px;
+        height: 40px;
+        border: none;
+        border-radius: 15%;
+        overflow: hidden; }
+      .divViewer_wrapper .divViewer .divViewer_selectors .divViewer_color_input {
+        width: 50px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: none; }
+    .divViewer_wrapper .divViewer .textArea {
+      margin: 20px auto;
+      padding: 10px;
+      text-align: justify;
+      height: 500px;
+      width: 80%;
+      font-size: 22px;
+      background-color: #fff;
+      resize: none;
+      box-shadow: 0 0 10px #bababa;
+      border: 1px solid #bababa; }
+      .divViewer_wrapper .divViewer .textArea:focus {
+        outline: none; }
+    .divViewer_wrapper .divViewer .biography_submit_button {
+      display: flex;
+      justify-content: center; }
+      .divViewer_wrapper .divViewer .biography_submit_button .biography_edit_button {
+        font-style: italic;
+        padding: 10px;
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: 500;
+        background-color: #797979;
+        border: none;
+        box-shadow: 0 0 5px #656565;
+        color: white;
+        transition: .4s all; }
+        .divViewer_wrapper .divViewer .biography_submit_button .biography_edit_button:hover {
+          background-color: #a0a0a0; }
+    .divViewer_wrapper .divViewer h4 {
+      text-align: center;
+      margin: 30px 0; }
+    .divViewer_wrapper .divViewer .biography_show {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      margin: 0 auto; }
+      .divViewer_wrapper .divViewer .biography_show .root {
+        font-size: 22px;
+        text-align: justify;
+        margin-bottom: 50px; }
 
 /*# sourceMappingURL=Text-editor.module.css.map */

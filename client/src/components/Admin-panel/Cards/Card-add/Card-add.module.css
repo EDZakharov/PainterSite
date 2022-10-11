@@ -42,7 +42,12 @@
 
 .button {
   margin: 10px 0 20px;
+  padding-bottom: 40px;
   background-color: #767676; }
+  .button i {
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 20px; }
   .button:hover {
     background-color: #939393; }
 

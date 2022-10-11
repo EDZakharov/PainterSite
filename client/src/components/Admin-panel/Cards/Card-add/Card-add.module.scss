@@ -47,7 +47,16 @@
 }
 .button {
   margin: 10px 0 20px;
+  padding-bottom: 40px;
   background-color: #767676;
+
+  i{
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 20px;
+
+  }
+
   &:hover{
     background-color: #939393;
   }

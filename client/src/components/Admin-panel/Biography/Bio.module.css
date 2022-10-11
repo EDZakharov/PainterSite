@@ -4,22 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%; }
-  .biography .biography_current h3 {
-    font-style: italic;
-    text-decoration: underline;
-    font-weight: 600;
-    text-align: center; }
-  .biography .biography_current article {
-    padding: 10px;
-    word-wrap: break-word;
-    font-size: 24px;
-    width: 100vw; }
-  .biography .biography_edit h4 {
-    font-style: italic;
-    text-decoration: underline;
-    font-weight: 600;
-    text-align: center; }
-  .biography .biography_edit .biography_edit_form {
+  .biography .biography_edit {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,24 +12,11 @@
     word-wrap: break-word;
     font-size: 24px;
     width: 100vw; }
-    .biography .biography_edit .biography_edit_form input {
+    .biography .biography_edit input {
       font-size: 24px;
       width: calc(100vw - 30px); }
-    .biography .biography_edit .biography_edit_form button {
+    .biography .biography_edit button {
       width: 200px;
       margin-top: 20px; }
-    .biography .biography_edit .biography_edit_form .biography_edit_button {
-      font-style: italic;
-      padding: 10px;
-      font-size: 25px;
-      text-transform: uppercase;
-      font-weight: 500;
-      background-color: #797979;
-      border: none;
-      box-shadow: 0 0 5px #656565;
-      color: white;
-      transition: .4s all; }
-      .biography .biography_edit .biography_edit_form .biography_edit_button:hover {
-        background-color: #a0a0a0; }
 
 /*# sourceMappingURL=Bio.module.css.map */

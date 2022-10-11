@@ -1,24 +1,133 @@
-.divViewer{
-  width: 80%;
-  height: 70%;
+@mixin buttons{
+  padding: 5px;
+  align-self: end;
+  font-weight: bold;
+  width: 40px;
+  font-style: italic;
+  font-size: 24px;
+  text-transform: uppercase;
+  background-color: #797979;
+  border: none;
+  box-shadow: 0 0 5px #656565;
+  color: white;
+  transition: .4s all;
+}
 
-  .divViewer_btn{
-    button{
-      margin: 20px;
-      padding: 5px;
+.divViewer_wrapper {
+  width: 100%;
+  height: 100vh;
+
+  .divViewer {
+    display: flex;
+    flex-direction: column;
+
+    h1{
+      text-align: center;
+      font-style: italic;
+      font-weight: 500;
     }
-  }
-  .divViewer_color_input{
+
+    .divViewer_selectors{
+      display: flex;
+      gap: 20px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      //text-align: center;
+      .divViewer_bold_button {
+        @include buttons;
+
+        &:hover {
+          background-color: rgb(160, 160, 160);
+        }
+      }
+      .divViewer_BR_button {
+        display: flex;
+        @include buttons;
+
+        &:hover {
+          background-color: rgb(160, 160, 160);
+        }
+      }
+
+      input[type="color"]{
+        width: 50px;
+        height: 40px;
+        border: none;
+        border-radius: 15%;
+        overflow: hidden;
+      }
+
+      .divViewer_color_input {
+        width: 50px;
+        height: 100%;
+        //height: 50px;
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+    }
+    .textArea {
+      margin: 20px auto;
+      padding: 10px;
+      text-align: justify;
+      height: 500px;
+      width: 80%;
+      font-size: 22px;
+      background-color: #fff;
+      resize: none;
+      box-shadow: 0 0 10px #bababa;
+      border: 1px solid #bababa;
+
+      &:focus{
+        outline: none;
+      }
+    }
+
+    .biography_submit_button{
+      display: flex;
+      justify-content: center;
+      .biography_edit_button {
+        font-style: italic;
+        padding: 10px;
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: 500;
+        background-color: #797979;
+        border: none;
+        box-shadow: 0 0 5px #656565;
+        color: white;
+        transition: .4s all;
+
+        &:hover {
+          background-color: rgb(160, 160, 160);
+        }
+      }
+    }
+    h4{
+      text-align: center;
+      margin: 30px 0;
+    }
+    .biography_show{
+      display: flex;
+      //flex-direction: column;
+      justify-content: center;
+      width: 80%;
+      margin: 0 auto;
+      .root {
+        font-size: 22px;
+        text-align: justify;
+        margin-bottom: 50px;
+      }
+    }
+
+
+
+
+
+
 
   }
 
-  .textArea{
-    width: 100%;
-    height: 300px;
-    font-size: 24px;
-  }
 
-  .root{
-    font-size: 24px;
-  }
 }
