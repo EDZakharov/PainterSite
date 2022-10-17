@@ -40,19 +40,22 @@ class ImageService {
     }
 
     async delete(name) {
+        console.log("DELETE-IMAGE",name)
         if(!name){
             throw ErrorHandler.BadRequest('Такая картинка не найдена')
         }
         try {
-            fs.readdir('server/uploads', (err, data) => {
-                fs.access(`server/uploads/${name}`, (error) => {
+            const path = __dirname.replace('service','uploads')
+            console.log(path)
+            fs.readdir(path, (err, data) => {
+                fs.access(`${path}/${name}`, (error) => {
                     if (error) {
                         //Файл не найден
                         // throw ErrorHandler.BadRequest('Такая картинка не найдена')
                         return {message: 'not found'}
                     } else {
                         //Файл найден
-                        fs.unlink(`server/uploads/${name}`,
+                        fs.unlink(`${path}/${name}`,
                             async function (err) {
                                 if (err) {
                                     console.log(err);
