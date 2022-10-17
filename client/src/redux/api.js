@@ -12,7 +12,7 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
         const token = getState().adminPanel.accessToken
         if (token) {
             headers.set('Authorization', `Bearer ${token}`)
-        }
+                    }
         return headers
     },
 }), {
@@ -166,7 +166,8 @@ const workspace = api.injectEndpoints({
                     return {
                         url: 'upload',
                         method: 'POST',
-                        body: data
+                        body: data,
+                        mode:'no-cors'
                     }
                 } else {
                     throw new Error('invalid data type')

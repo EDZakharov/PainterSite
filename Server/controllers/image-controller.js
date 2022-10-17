@@ -12,7 +12,10 @@ class imageController {
     }
 
     async upload(req,res,next) {
+        console.log('hi')
         try{
+            console.log('Upload-Controller-file:', req.file)
+	    console.log('Upload-Controller-image: ',req.body.image)
             const upload = await ImageService.upload(req.file, req.body.image)
             console.log(upload)
             res.status(201).json(upload)
