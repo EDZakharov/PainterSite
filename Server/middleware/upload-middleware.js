@@ -8,13 +8,20 @@ const path = require('path')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        fs.readdir('server/uploads', async (err, data) => {
-            const list = await ImageModel.find({})
-            const mongoImageNames = list.map(el => el.name)
-            const serverImageNames = data.map(el => el)
+        const path = __dirname.replace('middleware','uploads')
+        console.log(path)
+        fs.readdir(path, async (err, data) => {
+            let list = await ImageModel.find({})
+            console.log('DATA: ', data)
+            console.log('LIST: ', list)
+            const mongoImageNames =list? list.map(el => el.name):[]
+            const serverImageNames = data? data.map(el => el):[]
+            console.log('MONGOIMG: ', mongoImageNames)
+            console.log('SERVERIMG: ', serverImageNames)
             // console.log(mongoImageNames)
 
             const showDiff = diff(mongoImageNames, serverImageNames)
+            console.log('DIFF: ',showDiff)
             if (showDiff.length !== 0) {
                 //Clear DB
                 for (const elName of showDiff) {
@@ -24,19 +31,19 @@ const storage = multer.diskStorage({
                 for (const elName of showDiff) {
                     if (data.length !== 0) {
                         //Проверка на наличие файла в папке
-                        fs.access(`server/uploads/${elName}`, (error) => {
+                        fs.access(path, (error) => {
                             if (error) {
                                 //Файл не найден
-                                cb(null, 'server/uploads')
+                                cb(null, path)
                             } else {
                                 //Файл найден
-                                fs.unlink(`server/uploads/${elName}`,
+                                fs.unlink(path+`/${elName}`,
                                     function (err) {
                                         if (err) {
                                             console.log(err);
                                         } else {
                                             //Перезаписываем файл (удаляем)
-                                            cb(null, 'server/uploads')
+                                            cb(null, path)
                                         }
                                     });
                             }
