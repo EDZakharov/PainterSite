@@ -3,7 +3,7 @@ const UserController = require('../controllers/user-controller')
 const ImageController = require('../controllers/image-controller')
 const BiographyController = require('../controllers/Biography-controlle')
 const router = new Router()
-// const {body} = require('express-validator')
+const {body} = require('express-validator')
 const AuthMiddleware = require('../middleware/auth-middleware')
 const upload = require('../middleware/upload-middleware')
 
@@ -17,10 +17,10 @@ router.get('/biography',
 
 
 //ADMIN-PANEL-QUERIES
-// router.post('/registration',
-//     body('email').isEmail(),
-//     body('password').isLength({min: 3, max: 32}),
-//     UserController.registration)
+router.post('/registration',
+    body('email').isEmail(),
+    body('password').isLength({min: 3, max: 32}),
+    UserController.registration)
 router.post('/login',
     UserController.login)
 router.post('/logout',
@@ -32,7 +32,7 @@ router.patch('/patchBio',
     AuthMiddleware,
     BiographyController.patchBio)
 router.post('/upload',
-    AuthMiddleware,
+    //AuthMiddleware,
     upload.single('image'),
     ImageController.upload)
 router.delete('/delete',
