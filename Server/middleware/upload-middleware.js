@@ -8,20 +8,19 @@ const path = require('path')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-	const path = __dirname.replace('middleware','uploads')
-	console.log(path)
+	      const path = __dirname.replace('middleware','uploads')
+	      console.log(path)
         fs.readdir(path, async (err, data) => {
             let list = await ImageModel.find({})
             console.log('DATA: ', data)
-	    console.log('LIST: ', list)
+	          console.log('LIST: ', list)
             const mongoImageNames =list? list.map(el => el.name):[]
             const serverImageNames = data? data.map(el => el):[]
-	    console.log('MONGOIMG: ', mongoImageNames)
-	    console.log('SERVERIMG: ', serverImageNames)
+	          console.log('MONGOIMG: ', mongoImageNames)
+	          console.log('SERVERIMG: ', serverImageNames)
             // console.log(mongoImageNames)
-
             const showDiff = diff(mongoImageNames, serverImageNames)
-	    console.log('DIFF: ',showDiff)
+	          console.log('DIFF: ',showDiff)
             if (showDiff.length !== 0) {
                 //Clear DB
                 for (const elName of showDiff) {
@@ -80,6 +79,5 @@ const fileFilter = (req, file, cb) => {
 const limits = {
     fileSize: 1024 * 1024 * 20
 }
-
 
 module.exports = multer({storage: storage, fileFilter, limits: limits})
