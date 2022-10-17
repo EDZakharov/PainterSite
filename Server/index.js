@@ -7,7 +7,7 @@ const router = require('./routes/index')
 const errorMiddleware = require('./middleware/error-middleware')
 const mongoose = require('mongoose')
 
-const PORT = process.env.SERVER_PORT || 5000
+const PORT = 5000
 const MONGODB_KEY = process.env.MONGODB_KEY
 const app = express()
 
@@ -16,7 +16,7 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
 
 }))
@@ -27,7 +27,7 @@ app.use(errorMiddleware)
 
 const start = async () => {
     try{
-        await mongoose.connect(MONGODB_KEY, {
+        await mongoose.connect("mongodb://127.0.0.1:27017/PainterServer", {
             useNewUrlParser: true,
             useUnifiedTopology: true
         },() => console.log('MongoDB connected!'))
