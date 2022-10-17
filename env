@@ -1,5 +1,0 @@
-SERVER_PORT=5000
-CLIENT_URL=http://localhost:3000
-MONGODB_KEY=mongodb+srv://divizia21:root@paintersite.z9klzga.mongodb.net/?retryWrites=true&w=majority
-ADMIN_ACCESS_JWT=admin
-ADMIN_REFRESH_JWT=Wrong_Secure!!
