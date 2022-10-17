@@ -1,4 +1,4 @@
 
-const serverPath = 'http://localhost:7789/api/'
+const serverPath = 'http://api.edzaharov.ru/api/'
 
 export default serverPath

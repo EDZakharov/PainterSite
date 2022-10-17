@@ -14,12 +14,14 @@ class ImageService {
     }
 
     async upload(file, description) {
+        console.log('FILE-SERVICES: ',file)
         if (!file) {
+        console.log('!FILE')
             throw ErrorHandler.BadRequest('Error: Формат должен быть jpeg, png или jpg ')
         }
-
+        console.log('try to find DB img')
         const uploadData = await ImageModel.findOne({name: file.filename})
-
+        console.log('uploadDATA: ',uploadData)
         if (uploadData) {
             throw ErrorHandler.BadRequest('Такая картинка уже есть')
         }
@@ -31,6 +33,7 @@ class ImageService {
                 imageSrc: file ? file.path : '',
                 description: description ? description : ''
             })
+	    console.log("newUploadDB: ",newUpload)
             await newUpload.save()
             return newUpload
 
