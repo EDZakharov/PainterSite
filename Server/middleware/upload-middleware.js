@@ -1,4 +1,3 @@
-
 const diff = require('../service/diff-arr')
 const multer = require('multer')
 const moment = require('moment')
@@ -8,19 +7,12 @@ const path = require('path')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-	      const path = __dirname.replace('middleware','uploads')
-	      console.log(path)
+        const path = __dirname.replace('middleware', 'uploads')
         fs.readdir(path, async (err, data) => {
             let list = await ImageModel.find({})
-            console.log('DATA: ', data)
-	          console.log('LIST: ', list)
-            const mongoImageNames =list? list.map(el => el.name):[]
-            const serverImageNames = data? data.map(el => el):[]
-	          console.log('MONGOIMG: ', mongoImageNames)
-	          console.log('SERVERIMG: ', serverImageNames)
-            // console.log(mongoImageNames)
+            const mongoImageNames = list ? list.map(el => el.name) : []
+            const serverImageNames = data ? data.map(el => el) : []
             const showDiff = diff(mongoImageNames, serverImageNames)
-	          console.log('DIFF: ',showDiff)
             if (showDiff.length !== 0) {
                 //Clear DB
                 for (const elName of showDiff) {
@@ -36,7 +28,7 @@ const storage = multer.diskStorage({
                                 cb(null, path)
                             } else {
                                 //Файл найден
-                                fs.unlink(path+`/${elName}`,
+                                fs.unlink(path + `/${elName}`,
                                     function (err) {
                                         if (err) {
                                             console.log(err);
@@ -56,17 +48,17 @@ const storage = multer.diskStorage({
                 console.log('FILE HAS BEEN LOADED')
             }
 
-        }, (err => console.log('DATA_LOAD_ERROR: ',err)))
+        }, (err => console.log('DATA_LOAD_ERROR: ', err)))
     },
     filename: function (req, file, cb) {
-	console.log('ADD_FILENAME')
+        console.log('ADD_FILENAME')
         const date = moment().format('DDMMYYYY-HHmmss_SSS')
         cb(null, `${date}-${file.originalname}`)
     }
 })
 
 const fileFilter = (req, file, cb) => {
-	console.log('FILE_FILTER')
+    console.log('FILE_FILTER')
     if ((file.mimetype).includes('jpeg') ||
         (file.mimetype).includes('png') ||
         (file.mimetype).includes('jpg')) {

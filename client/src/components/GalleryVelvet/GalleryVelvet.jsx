@@ -2,7 +2,7 @@ import React from 'react';
 import style from './GalleryVelvet.module.scss'
 import PATH from '../../SERV_PATH'
 
-const GalleryVelvet = ({image,type,material,description,name,sizes,width,height}) => {
+const ImagesList = ({image,type,material,description,name,sizes,width,height}) => {
     return (
         <div className={style.galleryVelvet}>
             <img src={`${PATH}images/`+image} width={width} height={height}/>
@@ -17,4 +17,4 @@ const GalleryVelvet = ({image,type,material,description,name,sizes,width,height}
     );
 };
 
-export default GalleryVelvet;
+export default ImagesList;

@@ -11,11 +11,10 @@ const upload = require('../middleware/upload-middleware')
 //ALL-QUERIES
 router.get('/images',
     ImageController.getImagesList)
+router.get('/imagesByCategory',
+    ImageController.getImageByCategoryName)
 router.get('/biography',
     BiographyController.getBio)
-
-
-
 //ADMIN-PANEL-QUERIES
 router.post('/registration',
     body('email').isEmail(),

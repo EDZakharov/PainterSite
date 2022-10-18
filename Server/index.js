@@ -24,7 +24,6 @@ app.use('/api', router)
 app.use('/api/images', express.static(__dirname + '/uploads'))
 app.use(errorMiddleware)
 
-
 const start = async () => {
     try{
         await mongoose.connect('mongodb://127.0.0.1:27017/PainterServer', {
@@ -34,11 +33,9 @@ const start = async () => {
         app.listen(PORT, () => {
             console.log(`Server has been started on port: ${PORT}`)
         })
-
     } catch (e) {
         console.log(e)
     }
-
 }
 
 start()

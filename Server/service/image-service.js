@@ -3,7 +3,6 @@ const ImageModel = require('../models/image-model')
 const ErrorHandler = require('../exeptions/errorHandler')
 
 class ImageService {
-
     async getImagesList() {
         try {
             const images = await ImageModel.find({})
@@ -13,27 +12,38 @@ class ImageService {
         }
     }
 
-    async upload(file, description) {
-        console.log('FILE-SERVICES: ',file)
+    async getImageByCategoryName(query) {
+        try {
+            if (Object.keys(query).length === 0) {
+                const images = await ImageModel.find({})
+                return images
+            } else {
+                const images = await ImageModel.find({category: query.category})
+                return images
+            }
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async upload(file, description, category) {
         if (!file) {
-        console.log('!FILE')
             throw ErrorHandler.BadRequest('Error: Формат должен быть jpeg, png или jpg ')
         }
-        console.log('try to find DB img')
         const uploadData = await ImageModel.findOne({name: file.filename})
-        console.log('uploadDATA: ',uploadData)
         if (uploadData) {
             throw ErrorHandler.BadRequest('Такая картинка уже есть')
         }
 
         try {
             const newUpload = await new ImageModel({
-                // user: email,
                 name: file ? file.filename : '',
                 imageSrc: file ? file.path : '',
-                description: description ? description : ''
+                description: description ? description : '',
+                category: category ? category : ''
             })
-	    console.log("newUploadDB: ",newUpload)
+            console.log("ADD_NEW_IMG_TO_DB: ", newUpload)
             await newUpload.save()
             return newUpload
 
@@ -43,12 +53,12 @@ class ImageService {
     }
 
     async delete(name) {
-        console.log("DELETE-IMAGE",name)
-        if(!name){
+        console.log("DELETE-IMAGE", name)
+        if (!name) {
             throw ErrorHandler.BadRequest('Такая картинка не найдена')
         }
         try {
-            const path = __dirname.replace('service','uploads')
+            const path = __dirname.replace('service', 'uploads')
             console.log(path)
             fs.readdir(path, (err, data) => {
                 fs.access(`${path}/${name}`, (error) => {
@@ -74,14 +84,14 @@ class ImageService {
 
             })
             return {message: `Картинка ${name} была удалена`}
-        }catch (e) {
+        } catch (e) {
             console.log(e)
         }
     }
 
     async patch(name, description) {
         try {
-            await ImageModel.findOneAndUpdate({name},{description})
+            await ImageModel.findOneAndUpdate({name}, {description})
             const newList = await ImageModel.find({})
             return newList
         } catch (e) {

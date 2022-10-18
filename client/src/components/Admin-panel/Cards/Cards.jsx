@@ -37,16 +37,19 @@ const Cards = () => {
     const [fileData, setFileData] = useState(null)
     const [value, setValue] = useState('')
     const [description, setDescription] = useState('')
+    const [categories, setCategories] = useState('')
     const [setImage] = useSetImageMutation()
     const buttonHandler = useRef()
     const buttonHandler2 = useRef()
     const textHandler = useRef()
+    const categoriesHandler = useRef()
     const onSubmitHandler = (e) => {
         e.preventDefault()
         if (fileData !== null) {
             const dto = {
                 file: fileData,
-                description: description
+                description: description,
+                categories: categories
             }
             setImage(dto)
         }
@@ -55,6 +58,8 @@ const Cards = () => {
         textHandler.current.value = ''
         setValue('')
         setFileData(null)
+        setCategories(null)
+        categoriesHandler.current.selectOption("Paper")
     };
 
     const fileChangeHandler = (e) => {
@@ -67,16 +72,24 @@ const Cards = () => {
         setDescription(e.target.value)
     }
 
+    const onCategoriesSelectHandler = (e) => {
+        setCategories(e.value)
+    }
+
 
     return (
         <div className={style.cards}>
             <CardAdd onSubmitHandler={onSubmitHandler}
                      fileChangeHandler={fileChangeHandler}
                      textChangeHandler={textChangeHandler}
+                     onCategoriesSelectHandler={onCategoriesSelectHandler}
                      buttonHandler={buttonHandler}
                      buttonHandler2={buttonHandler2}
                      textHandler={textHandler}
-                     value={value}/>
+                     value={value}
+                     categoriesHandler={categoriesHandler}
+                     categories={categories}
+                     />
             {isLoading? <Preloader/> : <div className={style.cardsWrapper}>
                 {isSuccess && data.map(el => (<CardWrapper key={el._id} image={el}/>))}
             </div>}

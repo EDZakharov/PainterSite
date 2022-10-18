@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery, retry} from "@reduxjs/toolkit/dist/query/react";
 import PATH from "../SERV_PATH";
 import {logout, resetLocalToken, setBiography, setLocalToken} from "./toolkit";
-import { Mutex } from 'async-mutex'
+import {Mutex} from 'async-mutex'
 
 const mutex = new Mutex()
 
@@ -12,7 +12,7 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
         const token = getState().adminPanel.accessToken
         if (token) {
             headers.set('Authorization', `Bearer ${token}`)
-                    }
+        }
         return headers
     },
 }), {
@@ -22,7 +22,7 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
 
     await mutex.waitForUnlock()
-    if(api.endpoint === 'getBio') {
+    if (api.endpoint === 'getBio') {
 
     }
     let result = await staggeredBaseQuery(args, api, extraOptions)
@@ -149,6 +149,43 @@ const workspace = api.injectEndpoints({
                     [{type: 'apiData', id: 'LIST'}],
             // extraOptions: { maxRetries: 5 }
         }),
+        getImageByCategoryName: build.query({
+            query: (args) => {
+
+                if(args === 1){
+                    return {
+                        url: 'imagesByCategory',
+                        params: {"category": "Velvet"}
+                    }
+                }
+                if(args === 2){
+                    return {
+                        url: 'imagesByCategory',
+                        params: {"category": "Paper"}
+                    }
+                }
+                if(args === 3){
+                    return {
+                        url: 'imagesByCategory',
+                        params: {"category": "Silk"}
+                    }
+                }
+
+
+            },
+            invalidatesTags: ["apiData"],
+            providesTags: (result) =>
+                // is result available?
+                result
+                    ? // successful query
+                    [
+                        ...result.map(({id}) => ({type: 'apiData', id})),
+                        {type: 'apiData', id: 'LIST'},
+                    ]
+                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
+                    [{type: 'apiData', id: 'LIST'}],
+            // extraOptions: { maxRetries: 5 }
+        }),
         setImage: build.mutation({
             query: (dto) => {
                 // console.log(dto)
@@ -161,13 +198,14 @@ const workspace = api.injectEndpoints({
                     // const blob = new Blob([dto.description], { type: "text/xml"});
                     data.append("image", dto.file);
                     data.append("image", dto.description);
+                    data.append("category", dto.categories);
 
                     // data.append("image", blob);
                     return {
                         url: 'upload',
                         method: 'POST',
                         body: data,
-                        mode:'no-cors'
+                        mode: 'no-cors'
                     }
                 } else {
                     throw new Error('invalid data type')
@@ -229,5 +267,5 @@ const workspace = api.injectEndpoints({
     })
 })
 
-export const {usePatchBioMutation, useGetBioQuery, useLoginMutation, useLogoutMutation, useGetImagesQuery, useSetImageMutation, useDelImageMutation, useChangeImageDescriptionMutation} = workspace;
+export const {useGetImageByCategoryNameQuery, usePatchBioMutation, useGetBioQuery, useLoginMutation, useLogoutMutation, useGetImagesQuery, useSetImageMutation, useDelImageMutation, useChangeImageDescriptionMutation} = workspace;
 

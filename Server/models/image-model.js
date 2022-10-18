@@ -18,7 +18,11 @@ const imagesSchema = new Schema({
         type: String,
         default: ''
     },
-
+    category: {
+        type: String,
+        required: true,
+        default: ''
+    }
 })
 
 module.exports = mongoose.model('uploads', imagesSchema)
