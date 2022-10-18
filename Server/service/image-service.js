@@ -14,12 +14,14 @@ class ImageService {
     }
 
     async upload(file, description) {
+        console.log('FILE-SERVICES: ',file)
         if (!file) {
+        console.log('!FILE')
             throw ErrorHandler.BadRequest('Error: Формат должен быть jpeg, png или jpg ')
         }
-
+        console.log('try to find DB img')
         const uploadData = await ImageModel.findOne({name: file.filename})
-
+        console.log('uploadDATA: ',uploadData)
         if (uploadData) {
             throw ErrorHandler.BadRequest('Такая картинка уже есть')
         }
@@ -31,6 +33,7 @@ class ImageService {
                 imageSrc: file ? file.path : '',
                 description: description ? description : ''
             })
+	    console.log("newUploadDB: ",newUpload)
             await newUpload.save()
             return newUpload
 
@@ -40,19 +43,22 @@ class ImageService {
     }
 
     async delete(name) {
+        console.log("DELETE-IMAGE",name)
         if(!name){
             throw ErrorHandler.BadRequest('Такая картинка не найдена')
         }
         try {
-            fs.readdir('server/uploads', (err, data) => {
-                fs.access(`server/uploads/${name}`, (error) => {
+            const path = __dirname.replace('service','uploads')
+            console.log(path)
+            fs.readdir(path, (err, data) => {
+                fs.access(`${path}/${name}`, (error) => {
                     if (error) {
                         //Файл не найден
                         // throw ErrorHandler.BadRequest('Такая картинка не найдена')
                         return {message: 'not found'}
                     } else {
                         //Файл найден
-                        fs.unlink(`server/uploads/${name}`,
+                        fs.unlink(`${path}/${name}`,
                             async function (err) {
                                 if (err) {
                                     console.log(err);

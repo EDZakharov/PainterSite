@@ -27,7 +27,7 @@ app.use(errorMiddleware)
 
 const start = async () => {
     try{
-        await mongoose.connect("mongodb://127.0.0.1:27017/PainterServer", {
+        await mongoose.connect('mongodb://127.0.0.1:27017/PainterServer', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         },() => console.log('MongoDB connected!'))
