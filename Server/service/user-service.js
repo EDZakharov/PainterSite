@@ -29,6 +29,8 @@ class UserService {
     }
 
     async login(email, password) {
+	console.log("EMAIL: ",email)
+	console.log("PASSWORD: ",password)
         const candidate = await UserModel.findOne({email})
         if (!candidate) {
             throw ErrorHandler.BadRequest(`Пользователь ${email} не найден`)
@@ -39,10 +41,10 @@ class UserService {
         }
 
         const userDTOs = new userDTO(candidate)
-
+	console.log("DTO_ADDED: ",userDTOs)
         const tokens = tokenService.generateTokens({...userDTOs})
         await tokenService.saveToken(userDTOs.id, tokens.refreshToken)
-
+	console.log("TOKENS_ADDED")
         return {
             ...tokens,
             user: userDTOs,
