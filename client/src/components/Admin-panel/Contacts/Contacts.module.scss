@@ -1,0 +1,51 @@
+.contacts{
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: 50px auto;
+  .form{
+    text-align: center;
+    word-break: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(65, 65, 65, 0.71);
+    border-radius: 10px;
+    color: white;
+
+    input{
+      padding: 2px;
+      color: white;
+      width: 500px;
+      transition: 1ms all;
+      border: 3px solid rgb(143, 143, 143);
+
+      &:focus{
+        border: 3px solid #aeaeae;
+      }
+    }
+    .btn{
+      margin: 20px 0;
+      button{
+        padding: 10px;
+        text-transform: uppercase;
+        font-style: italic;
+        transition: .3s all;
+        box-shadow: 0 0 2px white;
+        border-radius: 5px;
+        &:hover{
+          cursor: pointer;
+          box-shadow: 0 0 2px black;
+          color: white;
+          background-color: #5c5c5c;
+        }
+        &:focus{
+          background-color: #ffffff;
+          color: #000000;
+          box-shadow: 0 0 2px white;
+        }
+      }
+
+    }
+  }
+}

@@ -3,7 +3,6 @@
   font-family: 'Poiret One', cursive;
   font-weight: 600;
   font-size: 18px;
-  padding: 8rem 0 2rem;
   background: #eff0f1;
   background: linear-gradient(0deg, #eff0f1 5%, white 100%); }
   .footer .footer__data__wrapper {
@@ -34,5 +33,21 @@
       border: 0px solid black;
       padding: 100px 0 150px;
       width: 300px; }
+  .footer .git {
+    background-color: #dbdbdc;
+    height: 100%;
+    padding: 15px 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial,sans-serif; }
+    .footer .git a {
+      text-decoration: none;
+      font-size: 13px;
+      color: black; }
+      .footer .git a:hover {
+        color: #c3363a;
+        transition: .4s; }
 
 /*# sourceMappingURL=Footer.module.css.map */

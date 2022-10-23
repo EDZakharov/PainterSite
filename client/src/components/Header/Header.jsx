@@ -1,16 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import style from './Header.module.scss'
 import logo from '../../assets/favicon.ico'
 import {NavLink} from "react-router-dom";
+import {useGetContactsQuery} from "../../redux/api";
+import ModalContacts from "../Modal/Modal-contacts/Modal-contacts";
 
 const Header = () => {
+    const {data, isLoading} = useGetContactsQuery()
     let onClickActiveStatus = ({isActive}) => (isActive ? style.active : 'inactive');
     let menuList = [
         {id: 1, href: '/painter', text: 'Главная'},
         {id: 2, href: '/about', text: 'О художнике'},
         {id: 3, href: '/gallery', text: 'Галерея работ'},
-        {id: 4, href: '/exposition', text: 'Онлайн выставки'},
-        {id: 5, href: '/shop', text: 'Магазин'},
+        // {id: 4, href: '/exposition', text: 'Онлайн выставки'},
+        // {id: 5, href: '/shop', text: 'Магазин'},
     ]
 
     return (
@@ -24,12 +27,15 @@ const Header = () => {
                     </nav>
                 </div>
                 <div className={style.contacts}>
-                    <span>+7 (889) 745-48-45</span>
+                    <span>{isLoading?'': data? `+ 
+                    ${data[0].contacts.phone.slice(0,1)}
+                    (${data[0].contacts.phone.slice(1,4)})
+                    ${data[0].contacts.phone.slice(4,7)}-${data[0].contacts.phone.slice(7,9)}-${data[0].contacts.phone.slice(9,11)}`:'+7 (906) 248-39-71'}</span>
                     <div className={style.messengers}>
-                        <a href="#"><p>Telegram</p></a>
-                        <a href="#"><p>WhatsApp</p></a>
+                        <a href={isLoading?'#':data? data[0].contacts.telegram:'#'}><p>Telegram</p></a>
+                        <a href={isLoading?'#':data? data[0].contacts.whatsApp:'#'}><p>WhatsApp</p></a>
                     </div>
-                    <button>Обратная связь</button>
+                    <ModalContacts/>
                 </div>
             </section>
         </header>

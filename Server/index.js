@@ -7,7 +7,7 @@ const router = require('./routes/index')
 const errorMiddleware = require('./middleware/error-middleware')
 const mongoose = require('mongoose')
 
-const PORT = 5000
+const PORT = process.env.SERVER_PORT || 5000
 const MONGODB_KEY = process.env.MONGODB_KEY
 const app = express()
 

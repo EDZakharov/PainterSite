@@ -35,6 +35,11 @@ const Footer = () => {
                     </ul>
                 </div>
             </section>
+            <div className={style.git}>
+                <a href="https://github.com/EDZakharov">
+                    <i className="fab fa-github"/> Github EDZakharov 2022 г.
+                </a>
+            </div>
         </footer>
     );
 };

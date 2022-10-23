@@ -1,0 +1,41 @@
+.modal_contacts {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(45, 45, 45, 0.79);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; }
+  .modal_contacts .modal_data {
+    width: 500px;
+    padding: 20px;
+    background-color: #606060;
+    position: relative;
+    border: 2px solid white; }
+    .modal_contacts .modal_data input {
+      color: white; }
+    .modal_contacts .modal_data .modal_close:before {
+      top: 0;
+      right: -50px;
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 50px;
+      transform: rotate(45deg);
+      background-color: #ffffff; }
+    .modal_contacts .modal_data .modal_close:after {
+      top: 0;
+      right: -50px;
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 50px;
+      transform: rotate(-45deg);
+      background-color: #ffffff; }
+    .modal_contacts .modal_data .modal_close:hover {
+      cursor: pointer; }
+
+/*# sourceMappingURL=Modal-contacts.module.css.map */

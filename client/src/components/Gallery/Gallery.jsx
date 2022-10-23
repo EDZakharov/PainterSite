@@ -1,6 +1,6 @@
 import React from "react";
 import style from './Gallery.module.scss'
-import ImagesList from "../GalleryVelvet/GalleryVelvet";
+import ImagesList from "../GalleryImage/GalleryImage";
 import {useState} from "react";
 import {useGetImageByCategoryNameQuery} from "../../redux/api";
 import Preloader from "../all/Preloader";

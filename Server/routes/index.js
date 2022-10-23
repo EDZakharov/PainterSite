@@ -2,6 +2,7 @@ const Router = require('express').Router
 const UserController = require('../controllers/user-controller')
 const ImageController = require('../controllers/image-controller')
 const BiographyController = require('../controllers/Biography-controlle')
+const ContactsController = require('../controllers/Contacts-controller')
 const router = new Router()
 const {body} = require('express-validator')
 const AuthMiddleware = require('../middleware/auth-middleware')
@@ -15,6 +16,8 @@ router.get('/imagesByCategory',
     ImageController.getImageByCategoryName)
 router.get('/biography',
     BiographyController.getBio)
+router.get('/contacts',
+    ContactsController.getContactsData)
 //ADMIN-PANEL-QUERIES
 router.post('/registration',
     body('email').isEmail(),
@@ -26,12 +29,14 @@ router.post('/logout',
     UserController.logout)
 router.get('/refresh',
     UserController.refresh)
-
+router.patch('/patchContacts',
+    AuthMiddleware,
+    ContactsController.patchContactsData)
 router.patch('/patchBio',
     AuthMiddleware,
     BiographyController.patchBio)
 router.post('/upload',
-    //AuthMiddleware,
+    AuthMiddleware,
     upload.single('image'),
     ImageController.upload)
 router.delete('/delete',

@@ -1,0 +1,48 @@
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: rgba(45, 45, 45, 0.79);
+  backdrop-filter: blur(10px);
+  height: 100%;
+  width: 100%; }
+  .modal .modal_content_wrapper {
+    position: relative; }
+    .modal .modal_content_wrapper .modal_image {
+      width: 800px;
+      height: 900px; }
+    .modal .modal_content_wrapper .close {
+      position: absolute;
+      display: block;
+      top: 0;
+      right: -80px;
+      width: 40px;
+      height: 40px; }
+      .modal .modal_content_wrapper .close:before {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 50px;
+        right: 17px;
+        top: -4px;
+        background-color: #ffffff;
+        transform: rotate(45deg); }
+      .modal .modal_content_wrapper .close:after {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 50px;
+        right: 17px;
+        top: -4px;
+        background-color: #ffffff;
+        transform: rotate(-45deg); }
+      .modal .modal_content_wrapper .close:hover {
+        cursor: pointer; }
+
+/*# sourceMappingURL=Modal-image.module.css.map */

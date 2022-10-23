@@ -20,17 +20,12 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
 })
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-
     await mutex.waitForUnlock()
-    if (api.endpoint === 'getBio') {
-
-    }
     let result = await staggeredBaseQuery(args, api, extraOptions)
-
     if (result.error && result.error.status === 409) {
         api.dispatch(logout())
-
     }
+
     if (!result.error && result.data.accessToken) {
         api.dispatch(setLocalToken(result.data.accessToken))
     }
@@ -101,7 +96,6 @@ const workspace = api.injectEndpoints({
                     : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
                     [{type: 'apiData', id: 'LIST'}],
         }),
-
         refresh: build.query({
             query: () => ({
                 url: 'refresh',
@@ -200,12 +194,10 @@ const workspace = api.injectEndpoints({
                     data.append("image", dto.description);
                     data.append("category", dto.categories);
 
-                    // data.append("image", blob);
                     return {
                         url: 'upload',
                         method: 'POST',
                         body: data,
-                        mode: 'no-cors'
                     }
                 } else {
                     throw new Error('invalid data type')
@@ -263,9 +255,36 @@ const workspace = api.injectEndpoints({
                     ]
                     : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
                     [{type: 'apiData', id: 'LIST'}],
-        })
+        }),
+        getContacts: build.query({
+            query: () => ({
+                url: 'contacts',
+                method: 'GET',
+            }),
+            invalidatesTags: ["apiData"],
+        }),
+        patchContacts: build.mutation({
+            query: (body) => ({
+                url: 'patchContacts',
+                method: 'PATCH',
+                body,
+            }),
+            invalidatesTags: ["apiData"],
+        }),
     })
 })
 
-export const {useGetImageByCategoryNameQuery, usePatchBioMutation, useGetBioQuery, useLoginMutation, useLogoutMutation, useGetImagesQuery, useSetImageMutation, useDelImageMutation, useChangeImageDescriptionMutation} = workspace;
+export const {
+    useGetImageByCategoryNameQuery,
+    usePatchBioMutation,
+    useGetBioQuery,
+    useLoginMutation,
+    useLogoutMutation,
+    useGetImagesQuery,
+    useSetImageMutation,
+    useDelImageMutation,
+    useChangeImageDescriptionMutation,
+    useGetContactsQuery,
+    usePatchContactsMutation,
+} = workspace;
 

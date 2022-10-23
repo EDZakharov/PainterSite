@@ -1,11 +1,14 @@
 import React from 'react';
-import style from './GalleryVelvet.module.scss'
+import style from './GalleryImage.module.scss'
 import PATH from '../../SERV_PATH'
+import ModalImage from "../Modal/Modal-Image/Modal-image";
 
-const ImagesList = ({image,type,material,description,name,sizes,width,height}) => {
+const ImagesList = ({image, type, material, description, name, sizes, width, height}) => {
     return (
         <div className={style.galleryVelvet}>
-            <img src={`${PATH}images/`+image} width={width} height={height}/>
+            <ModalImage>
+                <img src={`${PATH}images/` + image} width={width} height={height}/>
+            </ModalImage>
             {/*<div className={style.info}>*/}
             {/*    <span>{name}</span>*/}
             {/*    <span>{type}</span>*/}

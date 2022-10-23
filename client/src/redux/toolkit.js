@@ -6,7 +6,9 @@ const adminPanel = createSlice({
         accessToken: false,
         auth: false,
         isLogoutStatus: false,
-        biography: ''
+        biography: '',
+        contacts:{}
+
     },
     reducers: {
         setCurrentPath: (state, action) => {
@@ -43,10 +45,14 @@ const adminPanel = createSlice({
         },
         setBiography: (state,action) => {
             state.biography = action.payload
+        },
+        setContacts: (state,action) => {
+            console.log(action.payload)
+            state.contacts = action.payload
         }
     }
 })
 
 export default adminPanel
 
-export const {setBiography,setCurrentPath,setLocalToken,resetLocalToken,logout} = adminPanel.actions
+export const {setContacts,setBiography,setCurrentPath,setLocalToken,resetLocalToken,logout} = adminPanel.actions

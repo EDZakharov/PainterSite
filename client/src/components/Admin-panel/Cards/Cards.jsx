@@ -59,7 +59,7 @@ const Cards = () => {
         setValue('')
         setFileData(null)
         setCategories(null)
-        categoriesHandler.current.selectOption("Paper")
+        categoriesHandler.current.selectOption("")
     };
 
     const fileChangeHandler = (e) => {

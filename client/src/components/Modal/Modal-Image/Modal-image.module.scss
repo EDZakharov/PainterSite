@@ -1,0 +1,55 @@
+@mixin close_psE{
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  right: 17px;
+  top: -4px;
+  background-color: #ffffff;
+}
+
+.modal {
+  //text-align: center;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: rgba(45, 45, 45, 0.79);
+  backdrop-filter: blur(10px);
+  height: 100%;
+  width: 100%;
+
+  .modal_content_wrapper{
+    position: relative;
+    .modal_image {
+      width: 800px;
+      height: 900px;
+    }
+
+    .close{
+      position: absolute;
+      display: block;
+      top: 0;
+      right: -80px;
+      width: 40px;
+      height: 40px;
+
+      &:before{
+        @include close_psE;
+        transform: rotate(45deg);
+      }
+      &:after{
+        @include close_psE;
+        transform: rotate(-45deg);
+      }
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}

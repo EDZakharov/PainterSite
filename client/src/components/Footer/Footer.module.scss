@@ -16,8 +16,7 @@ $grid-border: 0px solid black;
 .footer{
   @include font;
   font-size: 18px;
-  padding: 8rem 0 2rem;
-  background: rgb(239,240,241);
+  background: rgb(239, 240, 241);
   background: linear-gradient(0deg,
           rgba(239,240,241,1) 5%,
           rgba(255,255,255,1) 100%);
@@ -58,6 +57,25 @@ $grid-border: 0px solid black;
     .dzenStyle{
       border: $grid-border;
       @include center;
+    }
+  }
+  .git{
+    background-color: rgb(219, 219, 220);
+    height: 100%;
+    padding: 15px 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial,sans-serif;
+    a{
+      text-decoration: none;
+      font-size: 13px;
+      color: black;
+      &:hover{
+        color: #c3363a;
+        transition: .4s;
+      }
     }
   }
 }

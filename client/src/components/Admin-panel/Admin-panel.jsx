@@ -4,7 +4,7 @@ import RoutesOutlet from "./Routes";
 import CardEdit from "./Cards/Card-edit/Card-edit";
 import {Route, Routes} from "react-router-dom";
 import {useSelector} from "react-redux";
-import Categories from "./Categories/Categories";
+import Contacts from "./Contacts/Contacts";
 import Bio from "./Biography/Bio";
 
 const AdminPanel = () => {
@@ -21,8 +21,8 @@ const AdminPanel = () => {
                     <Route index element={<Cards/>}/>
                     <Route path="/image" element={<CardEdit/>}/>
                 </Route>
-                <Route path="/categories" element={<RoutesOutlet/>}>
-                    <Route index element={<Categories/>}/>
+                <Route path="/contacts" element={<RoutesOutlet/>}>
+                    <Route index element={<Contacts/>}/>
                 </Route>
                 <Route path="/bio" element={<RoutesOutlet/>}>
                     <Route index element={<Bio/>}/>
