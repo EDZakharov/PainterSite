@@ -1,0 +1,19 @@
+.orders {
+  display: grid;
+  grid-template-areas: 'a b c';
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  height: 60px;
+  padding: 0 30px;
+  align-items: center;
+  justify-items: start; }
+  .orders span {
+    font-weight: bold;
+    font-size: 22px; }
+  .orders .phone {
+    grid-area: a; }
+  .orders .email {
+    grid-area: b; }
+  .orders .comment {
+    grid-area: c; }
+
+/*# sourceMappingURL=Orders.module.css.map */

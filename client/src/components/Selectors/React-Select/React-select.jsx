@@ -69,9 +69,9 @@ const React_Select = ({onCategoriesSelectHandler,categoriesHandler}) => {
                 className={style.select}
                 placeholder={'Выберите категорию'}
                 options={[
-            {value:"Paper", label:"На бумаге"},
-            {value:"Silk", label:"На шёлке"},
-            {value:"Velvet", label:"На вельвете"},
+            {value:"Paper", label:"На бумаге тушью"},
+            {value:"Else", label:"Другое"},
+            {value:"Canvas", label:"На холсте маслом"},
             ]}/>
     )
 }

@@ -19,15 +19,31 @@
   height: 100vh;
 
   .modal_data{
-    width: 500px;
+    width: 600px;
     padding: 20px;
-    background-color: #606060;
+    background-color: #ffffff;
     position: relative;
-    border: 2px solid white;
+    border: 4px solid #c3363a;
+    border-radius: 10px;
 
-    input{
-      color: white;
+    form{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      label{
+        font-size: 20px;
+        font-weight: bold;
+      }
+      button{
+        margin: 0 auto;
+      }
+      input{
+        color: black;
+      }
     }
+
+
     .modal_close {
       &:before {
         @include close_psE;
@@ -54,6 +70,8 @@
       }
 
     }
+
+
   }
 
 

@@ -1,10 +1,11 @@
 import {createApi, fetchBaseQuery, retry} from "@reduxjs/toolkit/dist/query/react";
 import PATH from "../SERV_PATH";
-import {logout, resetLocalToken, setBiography, setLocalToken} from "./toolkit";
+import {logout, resetLocalToken, setLocalToken} from "./toolkit";
 import {Mutex} from 'async-mutex'
 
 const mutex = new Mutex()
 
+//RETRY
 export const staggeredBaseQuery = retry(fetchBaseQuery({
     baseUrl: PATH,
     credentials: 'include',
@@ -19,6 +20,7 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
     maxRetries: 0,
 })
 
+//REAUTH
 const baseQueryWithReauth = async (args, api, extraOptions) => {
     await mutex.waitForUnlock()
     let result = await staggeredBaseQuery(args, api, extraOptions)
@@ -52,6 +54,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     return result
 }
 
+//CREATE_API
 export const api = createApi({
     reducerPath: "api",
     tagTypes: ['apiData'],
@@ -59,8 +62,61 @@ export const api = createApi({
     endpoints: (builder) => ({}),
 });
 
+//COMMON
+const retRes = (result) => {
+    if(result){
+        return [...result.map(({id}) => ({type: 'apiData', id})), {type: 'apiData', id: 'LIST'},]
+    } else {
+        return [{type: 'apiData', id: 'LIST'}]
+    }
+}
+
+const checkArgs = (args) => {
+    if(args === 1){
+        return {
+            url: 'imagesByCategory',
+            params: {"category": "Canvas"}
+        }
+    }
+    if(args === 2){
+        return {
+            url: 'imagesByCategory',
+            params: {"category": "Paper"}
+        }
+    }
+    if(args === 3){
+        return {
+            url: 'imagesByCategory',
+            params: {"category": "Else"}
+        }
+    }
+}
+
+const uploadImagesChecker = (dto) => {
+        if (
+            (dto.file && dto.file.type === "image/png") ||
+            dto.file.type === "image/jpeg" ||
+            dto.file.type === "image/jpg"
+        ) {
+            const data = new FormData();
+            data.append("image", dto.file);
+            data.append("image", dto.description);
+            data.append("category", dto.categories);
+
+            return {
+                url: 'upload',
+                method: 'POST',
+                body: data,
+            }
+        } else {
+            throw new Error('invalid data type')
+        }
+}
+
+//WORKSPACE
 const workspace = api.injectEndpoints({
     endpoints: (build) => ({
+        //AUTH
         login: build.mutation({
             query: ({email, password}) => ({
                 url: 'login',
@@ -102,17 +158,10 @@ const workspace = api.injectEndpoints({
                 method: 'GET',
             }),
             invalidatesTags: ["apiData"],
-            providesTags: (result) =>
-                // is result available?
-                result
-                    ? // successful query
-                    [
-                        ...result.map(({id}) => ({type: 'apiData', id})),
-                        {type: 'apiData', id: 'LIST'},
-                    ]
-                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
-                    [{type: 'apiData', id: 'LIST'}],
+            providesTags: retRes
         }),
+
+        //BIOGRAPHY
         getBio: build.query({
             query: () => ({
                 url: 'biography',
@@ -128,93 +177,22 @@ const workspace = api.injectEndpoints({
             }),
             invalidatesTags: ["apiData"],
         }),
+
+        //IMAGES
         getImages: build.query({
             query: () => 'images',
             invalidatesTags: ["apiData"],
-            providesTags: (result) =>
-                // is result available?
-                result
-                    ? // successful query
-                    [
-                        ...result.map(({id}) => ({type: 'apiData', id})),
-                        {type: 'apiData', id: 'LIST'},
-                    ]
-                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
-                    [{type: 'apiData', id: 'LIST'}],
-            // extraOptions: { maxRetries: 5 }
+            providesTags: retRes
         }),
         getImageByCategoryName: build.query({
-            query: (args) => {
-
-                if(args === 1){
-                    return {
-                        url: 'imagesByCategory',
-                        params: {"category": "Velvet"}
-                    }
-                }
-                if(args === 2){
-                    return {
-                        url: 'imagesByCategory',
-                        params: {"category": "Paper"}
-                    }
-                }
-                if(args === 3){
-                    return {
-                        url: 'imagesByCategory',
-                        params: {"category": "Silk"}
-                    }
-                }
-
-
-            },
+            query: checkArgs,
             invalidatesTags: ["apiData"],
-            providesTags: (result) =>
-                // is result available?
-                result
-                    ? // successful query
-                    [
-                        ...result.map(({id}) => ({type: 'apiData', id})),
-                        {type: 'apiData', id: 'LIST'},
-                    ]
-                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
-                    [{type: 'apiData', id: 'LIST'}],
-            // extraOptions: { maxRetries: 5 }
+            providesTags: retRes
         }),
         setImage: build.mutation({
-            query: (dto) => {
-                // console.log(dto)
-                if (
-                    (dto.file && dto.file.type === "image/png") ||
-                    dto.file.type === "image/jpeg" ||
-                    dto.file.type === "image/jpg"
-                ) {
-                    const data = new FormData();
-                    // const blob = new Blob([dto.description], { type: "text/xml"});
-                    data.append("image", dto.file);
-                    data.append("image", dto.description);
-                    data.append("category", dto.categories);
-
-                    return {
-                        url: 'upload',
-                        method: 'POST',
-                        body: data,
-                    }
-                } else {
-                    throw new Error('invalid data type')
-                }
-
-            },
+            query: uploadImagesChecker,
             invalidatesTags: ["apiData"],
-            providesTags: (result) =>
-                // is result available?
-                result
-                    ? // successful query
-                    [
-                        ...result.map(({id}) => ({type: 'apiData', id})),
-                        {type: 'apiData', id: 'LIST'},
-                    ]
-                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
-                    [{type: 'apiData', id: 'LIST'}],
+            providesTags: retRes
         }),
         delImage: build.mutation({
             query: (name) => {
@@ -225,16 +203,7 @@ const workspace = api.injectEndpoints({
                 }
             },
             invalidatesTags: ["apiData"],
-            providesTags: (result) =>
-                // is result available?
-                result
-                    ? // successful query
-                    [
-                        ...result.map(({id}) => ({type: 'apiData', id})),
-                        {type: 'apiData', id: 'LIST'},
-                    ]
-                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
-                    [{type: 'apiData', id: 'LIST'}],
+            providesTags: retRes
         }),
         changeImageDescription: build.mutation({
             query: (data) => {
@@ -245,17 +214,10 @@ const workspace = api.injectEndpoints({
                 }
             },
             invalidatesTags: ["apiData"],
-            providesTags: (result) =>
-                // is result available?
-                result
-                    ? // successful query
-                    [
-                        ...result.map(({id}) => ({type: 'apiData', id})),
-                        {type: 'apiData', id: 'LIST'},
-                    ]
-                    : // an error occurred, but we still want to refetch this query when `{ type: 'Posts', id: 'LIST' }` is invalidated
-                    [{type: 'apiData', id: 'LIST'}],
+            providesTags: retRes
         }),
+
+        //CONTACTS
         getContacts: build.query({
             query: () => ({
                 url: 'contacts',
@@ -271,10 +233,30 @@ const workspace = api.injectEndpoints({
             }),
             invalidatesTags: ["apiData"],
         }),
+
+        //ORDERS
+        getOrders: build.query({
+            query: () => ({
+                url: 'getUsersContacts',
+                method: 'GET',
+            }),
+            invalidatesTags: ["apiData"],
+        }),
+        setOrder: build.mutation({
+            query: (body) => ({
+                url: 'postUsersContacts',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ["apiData"],
+            providesTags: retRes
+        }),
     })
 })
 
 export const {
+    useGetOrdersQuery,
+    useSetOrderMutation,
     useGetImageByCategoryNameQuery,
     usePatchBioMutation,
     useGetBioQuery,

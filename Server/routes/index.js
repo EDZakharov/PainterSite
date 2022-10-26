@@ -18,6 +18,13 @@ router.get('/biography',
     BiographyController.getBio)
 router.get('/contacts',
     ContactsController.getContactsData)
+router.get('/getUsersContacts',
+    ContactsController.getUsersContactsData)
+router.post('/postUsersContacts',
+    ContactsController.addUsersContactsData)
+router.delete('/delUsersContacts',
+    ContactsController.deleteUsersContactsData)
+
 //ADMIN-PANEL-QUERIES
 router.post('/registration',
     body('email').isEmail(),

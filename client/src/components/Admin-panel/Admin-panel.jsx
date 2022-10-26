@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import {useSelector} from "react-redux";
 import Contacts from "./Contacts/Contacts";
 import Bio from "./Biography/Bio";
+import Orders from "./Orders/Orders";
 
 const AdminPanel = () => {
 
@@ -23,6 +24,9 @@ const AdminPanel = () => {
                 </Route>
                 <Route path="/contacts" element={<RoutesOutlet/>}>
                     <Route index element={<Contacts/>}/>
+                </Route>
+                <Route path="/orders" element={<RoutesOutlet/>}>
+                    <Route index element={<Orders/>}/>
                 </Route>
                 <Route path="/bio" element={<RoutesOutlet/>}>
                     <Route index element={<Bio/>}/>

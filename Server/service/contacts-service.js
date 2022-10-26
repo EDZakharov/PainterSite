@@ -1,4 +1,5 @@
 const ContactsModel = require('../models/contacts-model')
+const usersContactsSchema = require('../models/usersContacts')
 const ErrorHandler = require('../exeptions/errorHandler')
 
 class ContactsService {
@@ -27,6 +28,32 @@ class ContactsService {
         await patchData.save();
         return ContactsModel.find()
     }
+
+    async postUsersContactsData(data) {
+        if(!data){
+            throw ErrorHandler.BadRequest('Something went wrong')
+        }
+        const addData = await usersContactsSchema.create({usersContacts:data})
+        if(!addData){
+            throw ErrorHandler.BadRequest('Something went wrong')
+        }
+        await addData.save()
+        return usersContactsSchema.find()
+    }
+
+    async getUsersContactsData() {
+        const data = await usersContactsSchema.find()
+        return data
+    }
+
+    async deleteUsersContactsData(body){
+        if(!body.phone){
+            throw ErrorHandler.BadRequest('Something went wrong')
+        }
+        await usersContactsSchema.findOneAndDelete({usersContacts:{phone:body.phone}})
+        return usersContactsSchema.find()
+    }
+
 }
 
 module.exports = new ContactsService()

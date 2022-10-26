@@ -35,17 +35,17 @@ const MenuSelectors = ({menuPosChecker}) => {
         {
             id: 1, onClick: onchangeState1,
             className: link1State ? style.active : '',
-            text: 'Картины на бархатной бумаге'
+            text: 'Картины на холсте маслом'
         },
         {
             id: 2, onClick: onchangeState2,
             className: link2State ? style.active : '',
-            text: 'Картины на бумаге'
+            text: 'Картины на бумаге тушью'
         },
         {
             id: 3, onClick: onchangeState3,
             className: link3State ? style.active : '',
-            text: 'Картины на шёлке'
+            text: 'Другое'
         }
     ]
 

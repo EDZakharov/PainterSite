@@ -10,6 +10,12 @@ import AdminPanel from "./components/Admin-panel/Admin-panel";
 
 
 function App() {
+
+    setTimeout(() => {
+        localStorage.removeItem('isVisited')
+    },300000)
+
+
     return (
         <div className="App">
             <Routes>

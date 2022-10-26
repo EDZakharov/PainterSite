@@ -10,13 +10,24 @@
   width: 100vw;
   height: 100vh; }
   .modal_contacts .modal_data {
-    width: 500px;
+    width: 600px;
     padding: 20px;
-    background-color: #606060;
+    background-color: #ffffff;
     position: relative;
-    border: 2px solid white; }
-    .modal_contacts .modal_data input {
-      color: white; }
+    border: 4px solid #c3363a;
+    border-radius: 10px; }
+    .modal_contacts .modal_data form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px; }
+      .modal_contacts .modal_data form label {
+        font-size: 20px;
+        font-weight: bold; }
+      .modal_contacts .modal_data form button {
+        margin: 0 auto; }
+      .modal_contacts .modal_data form input {
+        color: black; }
     .modal_contacts .modal_data .modal_close:before {
       top: 0;
       right: -50px;
