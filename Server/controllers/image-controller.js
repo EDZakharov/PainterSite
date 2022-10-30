@@ -21,7 +21,7 @@ class imageController {
 
     async upload(req,res,next) {
         try{
-            const upload = await ImageService.upload(req.file, req.body.image, req.body.category)
+            const upload = await ImageService.upload(req.file, req.body.image, req.body.category, req.body.imageName, req.body.sizes)
             res.status(201).json(upload)
         }catch (e) {
             next(e)

@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Footer.module.scss'
+import githubIcon from '../../assets/icons8-github-30.png'
 
 const Footer = () => {
     return (
@@ -37,7 +38,7 @@ const Footer = () => {
             </section>
             <div className={style.git}>
                 <a href="https://github.com/EDZakharov">
-                    <i className="fab fa-github"/> Github EDZakharov 2022 г.
+                    <img src={githubIcon} alt="github"/>
                 </a>
             </div>
         </footer>

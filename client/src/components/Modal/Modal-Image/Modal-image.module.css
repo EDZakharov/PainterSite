@@ -16,9 +16,6 @@
     position: relative;
     border: 20px solid rgba(104, 104, 104, 0.51);
     border-radius: 15px; }
-    .modal .modal_content_wrapper .modal_image {
-      width: 800px;
-      height: 900px; }
     .modal .modal_content_wrapper .close {
       position: absolute;
       display: block;

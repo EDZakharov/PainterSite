@@ -17,9 +17,9 @@ const dot = (color = 'transparent') => ({
     },
 });
 
-const colourStyles= {
-    control: (styles) => ({ ...styles, backgroundColor: 'white', cursor:'pointer'}),
-    option: (styles, {isDisabled, isFocused, isSelected }) => {
+const colourStyles = {
+    control: (styles) => ({...styles, backgroundColor: 'white', cursor: 'pointer'}),
+    option: (styles, {isDisabled, isFocused, isSelected}) => {
         return {
             ...styles,
             backgroundColor: isDisabled
@@ -52,27 +52,48 @@ const colourStyles= {
         };
     },
 
-    input: (styles) => ({ ...styles, ...dot() }),
-    placeholder: (styles) => ({ ...styles, ...dot('black'),}),
-    singleValue: (styles) => ({ ...styles, ...dot("black") }),
+    input: (styles) => ({...styles, ...dot()}),
+    placeholder: (styles) => ({...styles, ...dot('black'),}),
+    singleValue: (styles) => ({...styles, ...dot("black")}),
 };
-const React_Select = ({onCategoriesSelectHandler,categoriesHandler}) => {
+const React_Select = ({
+                          onCategoriesSelectHandler,
+                          categoriesHandler,
+                          sizesHandler,
+                          onSizesSelectHandler
+}) => {
 
-    const onSelectChange = (e) =>{
+    const onSelectChange1 = (e) => {
         return onCategoriesSelectHandler(e)
     }
 
+    const onSelectChange2 = (e) => {
+        return onSizesSelectHandler(e)
+    }
+
     return (
-        <Select styles={colourStyles}
-                ref={categoriesHandler}
-                onChange={onSelectChange}
-                className={style.select}
-                placeholder={'Выберите категорию'}
-                options={[
-            {value:"Paper", label:"На бумаге тушью"},
-            {value:"Else", label:"Другое"},
-            {value:"Canvas", label:"На холсте маслом"},
-            ]}/>
+        <div className={style.selectors}>
+            <Select styles={colourStyles}
+                    ref={categoriesHandler}
+                    onChange={onSelectChange1}
+                    className={style.select}
+                    placeholder={'Выберите категорию'}
+                    options={[
+                        {value: "Paper", label: "На бумаге тушью"},
+                        {value: "Else", label: "Другое"},
+                        {value: "Canvas", label: "На холсте маслом"},
+                    ]}/>
+            <Select styles={colourStyles}
+                    ref={sizesHandler}
+                    onChange={onSelectChange2}
+                    className={style.select}
+                    placeholder={'Выберите размер'}
+                    options={[
+                        {value: "70x100", label: "70x100"},
+                        {value: "50x70", label: "50x70"},
+                        {value: "26x42", label: "26x42"}
+                    ]}/>
+        </div>
     )
 }
 export default React_Select

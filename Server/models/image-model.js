@@ -10,6 +10,11 @@ const imagesSchema = new Schema({
         type: String,
         required: true
     },
+    imageName: {
+        type: String,
+        required: true,
+        default: ''
+    },
     description: {
         type: String,
         required: false
@@ -22,7 +27,12 @@ const imagesSchema = new Schema({
         type: String,
         required: true,
         default: ''
-    }
+    },
+    sizes: {
+        type: String,
+        required: true,
+        default: ''
+    },
 })
 
 module.exports = mongoose.model('uploads', imagesSchema)

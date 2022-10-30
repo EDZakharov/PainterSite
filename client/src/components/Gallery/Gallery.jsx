@@ -14,24 +14,14 @@ const Gallery = () => {
         setMenuPos(position)
     }
 
-
-
     const menuPosSwitcher = (pos) => {
-        switch (pos) {
-            case 1:
-                return data.map(el => {
-                    return <ImagesList key={el._id} image={el.name} width={'339px'} height={'469px'}/>
-                })
-            case 2:
-                return data.map(el => {
-                    return <ImagesList key={el._id} image={el.name} width={'339px'} height={'469px'}/>
-                })
-            case 3:
-                return data.map(el => {
-                    return <ImagesList key={el._id} image={el.name} width={'339px'} height={'469px'}/>
-                })
-            default:
-                return ""
+        if (!pos) {
+            return <Preloader/>
+        }
+        if (pos === 1 || pos === 2 || pos === 3) {
+            return data.map(el => {
+                return <ImagesList key={el._id} image={el}/>
+            })
         }
     }
 

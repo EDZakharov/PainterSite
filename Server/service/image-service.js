@@ -27,7 +27,7 @@ class ImageService {
         }
     }
 
-    async upload(file, description, category) {
+    async upload(file, description, category, imageName, sizes) {
         if (!file) {
             throw ErrorHandler.BadRequest('Error: Формат должен быть jpeg, png или jpg ')
         }
@@ -39,9 +39,11 @@ class ImageService {
         try {
             const newUpload = await new ImageModel({
                 name: file ? file.filename : '',
+                imageName: imageName ? imageName : '',
                 imageSrc: file ? file.path : '',
                 description: description ? description : '',
-                category: category ? category : ''
+                category: category ? category : '',
+                sizes: sizes ? sizes : '',
             })
             console.log("ADD_NEW_IMG_TO_DB: ", newUpload)
             await newUpload.save()

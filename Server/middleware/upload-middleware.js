@@ -3,7 +3,6 @@ const multer = require('multer')
 const moment = require('moment')
 const ImageModel = require('../models/image-model')
 const fs = require('fs')
-const path = require('path')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -45,20 +44,17 @@ const storage = multer.diskStorage({
                 }
             } else {
                 cb(null, path)
-                console.log('FILE HAS BEEN LOADED')
             }
 
         }, (err => console.log('DATA_LOAD_ERROR: ', err)))
     },
     filename: function (req, file, cb) {
-        console.log('ADD_FILENAME')
         const date = moment().format('DDMMYYYY-HHmmss_SSS')
         cb(null, `${date}-${file.originalname}`)
     }
 })
 
 const fileFilter = (req, file, cb) => {
-    console.log('FILE_FILTER')
     if ((file.mimetype).includes('jpeg') ||
         (file.mimetype).includes('png') ||
         (file.mimetype).includes('jpg')) {
@@ -69,7 +65,7 @@ const fileFilter = (req, file, cb) => {
 }
 
 const limits = {
-    fileSize: 1024 * 1024 * 20
+    fileSize: 1024 * 1024 * 20 * 10
 }
 
 module.exports = multer({storage: storage, fileFilter, limits: limits})

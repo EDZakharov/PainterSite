@@ -1,5 +1,5 @@
 
-// const serverPath = 'http://api.edzaharov.ru/api/'
-const serverPath = 'http://localhost:7789/api/'
+// const serverPath = 'http://api.dzenstyle.ru/api/'
+const serverPath = 'http://localhost:5000/api/'
 
 export default serverPath

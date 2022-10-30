@@ -36,18 +36,11 @@
   .footer .git {
     background-color: #dbdbdc;
     height: 100%;
-    padding: 15px 0;
+    padding: 15px 0 0 0;
     display: block;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-family: Arial,sans-serif; }
-    .footer .git a {
-      text-decoration: none;
-      font-size: 13px;
-      color: black; }
-      .footer .git a:hover {
-        color: #c3363a;
-        transition: .4s; }
 
 /*# sourceMappingURL=Footer.module.css.map */

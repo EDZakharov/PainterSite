@@ -7,8 +7,7 @@ const router = require('./routes/index')
 const errorMiddleware = require('./middleware/error-middleware')
 const mongoose = require('mongoose')
 
-const PORT = process.env.SERVER_PORT || 5000
-const MONGODB_KEY = process.env.MONGODB_KEY
+const PORT = 5000
 const app = express()
 
 app.use(express.json())
@@ -18,7 +17,6 @@ app.use(cors({
     credentials: true,
     origin: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
-
 }))
 app.use('/api', router)
 app.use('/api/images', express.static(__dirname + '/uploads'))

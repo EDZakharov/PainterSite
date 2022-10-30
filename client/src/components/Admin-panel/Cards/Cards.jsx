@@ -21,12 +21,14 @@ const CardWrapper = ({image}) => {
         navigateTo(`/admin/image?id=${image._id}&edit=true`)
     }
 
-    const imageSplitName = image.name.split('-')
+
+    console.log(image)
 
     return (
         <Card name={image.name}
+              imageName={image.imageName}
+              sizes={image.sizes}
               description={image.description}
-              imageSplitName={imageSplitName}
               spanEditClickHandler={spanEditClickHandler}/>
     )
 }
@@ -34,32 +36,37 @@ const CardWrapper = ({image}) => {
 
 const Cards = () => {
     const {data = [], isSuccess, isLoading} = useGetImagesQuery()
-    const [fileData, setFileData] = useState(null)
-    const [value, setValue] = useState('')
-    const [description, setDescription] = useState('')
-    const [categories, setCategories] = useState('')
     const [setImage] = useSetImageMutation()
+    const [fileData, setFileData] = useState(null)
+    const [description, setDescription] = useState('')
+    const [name, setName] = useState('')
+    const [categories, setCategories] = useState('')
+    const [sizes, setSizes] = useState('')
     const buttonHandler = useRef()
     const buttonHandler2 = useRef()
-    const textHandler = useRef()
     const categoriesHandler = useRef()
+    const sizesHandler = useRef()
     const onSubmitHandler = (e) => {
         e.preventDefault()
         if (fileData !== null) {
             const dto = {
                 file: fileData,
+                name: name,
                 description: description,
-                categories: categories
+                categories: categories,
+                sizes: sizes,
             }
+            // console.log(dto)
             setImage(dto)
         }
         buttonHandler.current.value = null;
         buttonHandler2.current.value = "Выберите файл..."
-        textHandler.current.value = ''
-        setValue('')
         setFileData(null)
         setCategories(null)
+        setName('')
+        setDescription('')
         categoriesHandler.current.selectOption("")
+        sizesHandler.current.selectOption("")
     };
 
     const fileChangeHandler = (e) => {
@@ -68,12 +75,17 @@ const Cards = () => {
     }
 
     const textChangeHandler = (e) => {
-        setValue(e.target.value)
         setDescription(e.target.value)
+    }
+    const onNameChange = (e) => {
+        setName(e.target.value)
     }
 
     const onCategoriesSelectHandler = (e) => {
         setCategories(e.value)
+    }
+    const onSizesSelectHandler = (e) => {
+        setSizes(e.value)
     }
 
 
@@ -85,10 +97,12 @@ const Cards = () => {
                      onCategoriesSelectHandler={onCategoriesSelectHandler}
                      buttonHandler={buttonHandler}
                      buttonHandler2={buttonHandler2}
-                     textHandler={textHandler}
-                     value={value}
+                     description={description}
+                     name={name}
+                     onNameChange={onNameChange}
                      categoriesHandler={categoriesHandler}
-                     categories={categories}
+                     sizesHandler={sizesHandler}
+                     onSizesSelectHandler={onSizesSelectHandler}
                      />
             {isLoading? <Preloader/> : <div className={style.cardsWrapper}>
                 {isSuccess && data.map(el => (<CardWrapper key={el._id} image={el}/>))}

@@ -1,4 +1,8 @@
 .select {
   z-index: 1000; }
 
+.selectors {
+  display: flex;
+  gap: 30px; }
+
 /*# sourceMappingURL=React-select.module.css.map */

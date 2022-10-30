@@ -102,11 +102,13 @@ const uploadImagesChecker = (dto) => {
             data.append("image", dto.file);
             data.append("image", dto.description);
             data.append("category", dto.categories);
+            data.append("sizes", dto.sizes);
+            data.append("imageName", dto.name);
 
             return {
                 url: 'upload',
                 method: 'POST',
-                body: data,
+                body: data
             }
         } else {
             throw new Error('invalid data type')
