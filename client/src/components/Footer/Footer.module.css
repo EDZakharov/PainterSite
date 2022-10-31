@@ -1,38 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+a {
+  color: #c3363a; }
+  a:hover {
+    color: black; }
+
 .footer {
   font-family: 'Poiret One', cursive;
   font-weight: 600;
   font-size: 18px;
   background: #eff0f1;
   background: linear-gradient(0deg, #eff0f1 5%, white 100%); }
+  @media screen and (max-width: 400px) {
+    .footer {
+      display: none; } }
   .footer .footer__data__wrapper {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
     width: 1400px;
     margin: 0 auto; }
-    @media screen and (max-width: 1400px) {
-      .footer .footer__data__wrapper {
-        width: 100vw; } }
     .footer .footer__data__wrapper ul {
       list-style-type: none; }
     .footer .footer__data__wrapper ul li {
       text-align: left; }
     .footer .footer__data__wrapper .privacy {
       border: 0px solid black;
-      padding: 100px 0 150px;
-      width: 300px; }
+      margin: 100px auto; }
     .footer .footer__data__wrapper .info {
       border: 0px solid black;
-      padding: 100px 0 150px;
-      width: 300px; }
+      margin: 100px auto; }
     .footer .footer__data__wrapper .gallery {
       border: 0px solid black;
-      padding: 100px 0 150px;
-      width: 300px; }
+      margin: 100px auto; }
     .footer .footer__data__wrapper .dzenStyle {
       border: 0px solid black;
-      padding: 100px 0 150px;
-      width: 300px; }
+      margin: 100px auto; }
   .footer .git {
     background-color: #dbdbdc;
     height: 100%;

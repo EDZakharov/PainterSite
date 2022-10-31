@@ -34,11 +34,11 @@ const ModalImage = ({children, imageProps}) => {
         if (where === 'modal') {
             if (pars === 'width') {
                 let width = sizes.split('x')[0]
-                return +width === 26 ? +width * 25 : +width === 70 ? +width * 12 : +width * 12
+                return +width === 26 ? +width * 25 : +width === 70 ? +width * 10 : +width * 12
             }
             if (pars === 'height') {
                 let height = sizes.split('x')[1]
-                return +height === 42 ? +height * 25 : +height === 100 ? +height * 12 : +height * 14
+                return +height === 42 ? +height * 25 : +height === 100 ? +height * 10 : +height * 14
             }
         }
 

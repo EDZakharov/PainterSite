@@ -1,90 +1,205 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+//@import url('public');
 
-@mixin font{
+@mixin font {
   font-family: 'Poiret One', cursive;
   font-weight: 600;
 }
 
-.general{
-  .welcome__image{
-    background: rgb(239,240,241);
+
+.general {
+
+  @media screen and (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(239, 240, 241);
     background: linear-gradient(0deg,
-            rgba(239,240,241,1) 69%,
-            rgba(255,255,255,1) 100%);
-    position: relative;
-    padding-bottom: 100px;
+            rgba(239, 240, 241, 1) 69%,
+            rgba(255, 255, 255, 1) 100%,
+            rgba(255, 255, 255, 1) 5%,
+            rgba(239, 240, 241, 1) 100%
+    );
+  }
+  @media screen and (min-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(239, 240, 241);
+    background: linear-gradient(0deg,
+            rgba(239, 240, 241, 1) 69%,
+            rgba(255, 255, 255, 1) 100%,
+            rgba(255, 255, 255, 1) 5%,
+            rgba(239, 240, 241, 1) 100%
+    );
+  }
 
-    div{
-      margin-top: 150px;
-      height: 730px;
-      background-repeat: no-repeat;
-      background-image: url('fon.png');
-      background-position: center;
-      background-size: cover;
 
-      @media screen and (max-width: 990px){
-        background-size: 155%;
-      }
-
-    }
-
-    .style{
-      position: absolute;
+  .welcome__images {
+    @media screen and (max-width: 400px) {
       display: flex;
-      top: 240px;
-      width: 100%;
       flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      @include font;
-      font-size: 100px;
-      color: #c3363a;
-      background-color: rgba(210, 210, 210, 0);
+      align-items: center;
+      width: 100vw;
+      //background-color: hotpink;
 
-      @media screen and (max-width: 990px){
-        font-size: 60px;
-      }
-      @media screen and (max-width: 610px){
-        font-size: 40px;
-      }
-
-    }
-  }
-
-  .main__wrapper{
-    background: rgb(239,240,241);
-    background: linear-gradient(0deg,
-            rgba(255,255,255,1) 5%,
-            rgba(239,240,241,1) 100%);
-    //padding: 50px 0;
-    .container{
-      width: 1400px;
-      margin: 0 auto;
-      @media screen and (max-width: 1400px){
-        width: 100vw;
-      }
-      .main{
-        box-sizing: border-box;
+      .dzenstyle {
         display: flex;
+        color: #c3363a;
+        flex-direction: column;
+        font-size: 60px;
+        @include font;
+      }
+      .imagesP {
         width: 100%;
-        gap: 25px;
+        height: 100%;
+      }
+    }
+    @media screen and (min-width: 400px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin: 100px 0;
+      .dzenstyle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        color: #c3363a;
+        @include font;
+      }
 
-        .image{
-          width: 800px;
-          box-sizing: border-box;
-          border: 3px solid black;
+      .images {
+        margin-top: 50px;
+        width: 500px;
+      }
+
+
+
+    }
+  }
+  .painter__data {
+    @media screen and (max-width: 400px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      background-color: hotpink;
+
+      .painter__data__photoandname {
+        .image {
+          width: 100%;
+        }
+        .hud{
+          display: none;
         }
 
-        .description{
-          text-align: justify;
+        &:before {
+          content: "Художник - Р.Х. Абдульмянов";
+          margin: 0 40px;
+          color: #c3363a;
           @include font;
-          font-size: 20px;
-
-          p{
-            padding: 10px 0;
-          }
+          font-size: 25px;
         }
       }
     }
+
+
   }
+
 }
+
+//.general{
+//  display: flex;
+//  flex-direction: column;
+//  margin: 150px auto 0;
+//  width: 100vw;
+//
+//  .welcome__image{
+//    background: rgb(239,240,241);
+//    background: linear-gradient(0deg,
+//            rgba(239,240,241,1) 69%,
+//            rgba(255,255,255,1) 100%);
+//    position: relative;
+//    padding-bottom: 100px;
+//
+//
+//    @media screen and (max-height: 1100px){
+//      height: calc(100vh - 150px);
+//    }
+//
+//    display: flex;
+//    gap: 40px;
+//    align-items: center;
+//    justify-content: center;
+//    .dzenstyle{
+//      display: flex;
+//      flex-direction: column;
+//      align-items: center;
+//      @include font;
+//      font-size: 100px;
+//      color: #c3363a;
+//      .hud{
+//        font-size: 20px;
+//      }
+//    }
+//    .images{
+//      width: 550px;
+//
+//      @media screen and (max-width: 1400px){
+//        width: 450px;
+//      }
+//
+//    }
+//  }
+//
+//  .main__wrapper{
+//    background: rgb(239,240,241);
+//    background: linear-gradient(0deg,
+//            rgba(255,255,255,1) 5%,
+//            rgba(239,240,241,1) 100%);
+//    //padding: 50px 0;
+//    width: 100vw;
+//
+//    .container{
+//      width: 1400px;
+//      margin: 0 auto;
+//      .main{
+//        box-sizing: border-box;
+//        display: flex;
+//        //width: 100%;
+//        gap: 25px;
+//
+//        .painter__data{
+//          display: flex;
+//          flex-direction: column;
+//          .hud{
+//            @include font;
+//            color: #c3363a;
+//            font-size: 20px;
+//            align-self: end;
+//          }
+//          .image{
+//            width: 400px;
+//          }
+//        }
+//
+//
+//
+//        .description{
+//          text-align: justify;
+//          @include font;
+//          font-size: 20px;
+//
+//          p{
+//            padding: 10px 0;
+//          }
+//        }
+//      }
+//    }
+//  }
+//}

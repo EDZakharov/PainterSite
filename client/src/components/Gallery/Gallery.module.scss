@@ -1,10 +1,10 @@
 .gallery {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  min-height: 1200px;
   .gallery__nav {
     width: 1400px;
-    margin: 0 auto;
+    margin:  0 auto;
   }
   .gallery__images__wrapper {
     display: flex;

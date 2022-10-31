@@ -1,21 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
 
+a{
+  color: #c3363a;
+  &:hover{
+    color: black;
+  }
+}
+
 @mixin font{
   font-family: 'Poiret One', cursive;
   font-weight: 600;
 }
 
 @mixin center{
-  //text-align: center;
-  padding: 100px 0 150px;
-  width: 300px;
+  margin: 100px auto;
 }
 
 $grid-border: 0px solid black;
 
 .footer{
+  //background-color: greenyellow;
   @include font;
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
   font-size: 18px;
   background: rgb(239, 240, 241);
   background: linear-gradient(0deg,
@@ -23,13 +32,14 @@ $grid-border: 0px solid black;
           rgba(255,255,255,1) 100%);
 
   .footer__data__wrapper{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
     width: 1400px;
     margin: 0 auto;
 
     @media screen and (max-width: 1400px){
-      width: 100vw;
+      //width: 100vw;
     }
 
     ul{
@@ -61,7 +71,6 @@ $grid-border: 0px solid black;
     }
   }
   .git{
-
     background-color: rgb(219, 219, 220);
     height: 100%;
     padding: 15px 0 0 0;

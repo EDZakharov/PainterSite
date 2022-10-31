@@ -1,7 +1,7 @@
 .gallery {
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  min-height: 1200px; }
   .gallery .gallery__nav {
     width: 1400px;
     margin: 0 auto; }

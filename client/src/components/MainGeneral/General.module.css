@@ -1,62 +1,73 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-.general .welcome__image {
-  background: #eff0f1;
-  background: linear-gradient(0deg, #eff0f1 69%, white 100%);
-  position: relative;
-  padding-bottom: 100px; }
-  .general .welcome__image div {
-    margin-top: 150px;
-    height: 730px;
-    background-repeat: no-repeat;
-    background-image: url("fon.png");
-    background-position: center;
-    background-size: cover; }
-    @media screen and (max-width: 990px) {
-      .general .welcome__image div {
-        background-size: 155%; } }
-  .general .welcome__image .style {
-    position: absolute;
+@media screen and (max-width: 400px) {
+  .general {
     display: flex;
-    top: 240px;
-    width: 100%;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    font-family: 'Poiret One', cursive;
-    font-weight: 600;
-    font-size: 100px;
-    color: #c3363a;
-    background-color: rgba(210, 210, 210, 0); }
-    @media screen and (max-width: 990px) {
-      .general .welcome__image .style {
-        font-size: 60px; } }
-    @media screen and (max-width: 610px) {
-      .general .welcome__image .style {
-        font-size: 40px; } }
-.general .main__wrapper {
-  background: #eff0f1;
-  background: linear-gradient(0deg, white 5%, #eff0f1 100%); }
-  .general .main__wrapper .container {
-    width: 1400px;
-    margin: 0 auto; }
-    @media screen and (max-width: 1400px) {
-      .general .main__wrapper .container {
-        width: 100vw; } }
-    .general .main__wrapper .container .main {
-      box-sizing: border-box;
+    align-items: center;
+    background: #eff0f1;
+    background: linear-gradient(0deg, #eff0f1 69%, white 100%, white 5%, #eff0f1 100%); } }
+@media screen and (min-width: 400px) {
+  .general {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #eff0f1;
+    background: linear-gradient(0deg, #eff0f1 69%, white 100%, white 5%, #eff0f1 100%); } }
+@media screen and (max-width: 400px) {
+  .general .welcome__images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw; }
+    .general .welcome__images .dzenstyle {
       display: flex;
+      color: #c3363a;
+      flex-direction: column;
+      font-size: 60px;
+      font-family: 'Poiret One', cursive;
+      font-weight: 600; }
+    .general .welcome__images .imagesP {
       width: 100%;
-      gap: 25px; }
-      .general .main__wrapper .container .main .image {
-        width: 800px;
-        box-sizing: border-box;
-        border: 3px solid black; }
-      .general .main__wrapper .container .main .description {
-        text-align: justify;
-        font-family: 'Poiret One', cursive;
-        font-weight: 600;
-        font-size: 20px; }
-        .general .main__wrapper .container .main .description p {
-          padding: 10px 0; }
+      height: 100%; } }
+@media screen and (min-width: 400px) {
+  .general .welcome__images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 100px 0; }
+    .general .welcome__images .dzenstyle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+      color: #c3363a;
+      font-family: 'Poiret One', cursive;
+      font-weight: 600; }
+    .general .welcome__images .images {
+      margin-top: 50px;
+      width: 500px; } }
+@media screen and (max-width: 400px) {
+  .general .painter__data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    background-color: hotpink; }
+    .general .painter__data .painter__data__photoandname .image {
+      width: 100%; }
+    .general .painter__data .painter__data__photoandname .hud {
+      display: none; }
+    .general .painter__data .painter__data__photoandname:before {
+      content: "Художник - Р.Х. Абдульмянов";
+      margin: 0 40px;
+      color: #c3363a;
+      font-family: 'Poiret One', cursive;
+      font-weight: 600;
+      font-size: 25px; } }
 
 /*# sourceMappingURL=General.module.css.map */
