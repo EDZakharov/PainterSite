@@ -8,48 +8,34 @@
 
 
 .general {
-
-  @media screen and (max-width: 400px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(239, 240, 241);
-    background: linear-gradient(0deg,
-            rgba(239, 240, 241, 1) 69%,
-            rgba(255, 255, 255, 1) 100%,
-            rgba(255, 255, 255, 1) 5%,
-            rgba(239, 240, 241, 1) 100%
-    );
-  }
-  @media screen and (min-width: 400px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(239, 240, 241);
-    background: linear-gradient(0deg,
-            rgba(239, 240, 241, 1) 69%,
-            rgba(255, 255, 255, 1) 100%,
-            rgba(255, 255, 255, 1) 5%,
-            rgba(239, 240, 241, 1) 100%
-    );
-  }
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  //background-color:greenyellow;
+  //background: rgb(239, 240, 241);
+  //background: linear-gradient(0deg,
+  //        rgba(239, 240, 241, 1) 69%,
+  //        rgba(255, 255, 255, 1) 100%,
+  //        rgba(255, 255, 255, 1) 5%,
+  //        rgba(239, 240, 241, 1) 100%
+  //);
 
   .welcome__images {
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 650px) {
+      // MOBILE
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100vw;
-      //background-color: hotpink;
+      //width: 100%;
 
+      overflow-y: hidden;
       .dzenstyle {
         display: flex;
         color: #c3363a;
         flex-direction: column;
-        font-size: 60px;
+        font-size: 70px;
         @include font;
       }
       .imagesP {
@@ -57,58 +43,191 @@
         height: 100%;
       }
     }
-    @media screen and (min-width: 400px) {
+
+
+    @media screen and (min-width: 650px) {
+      // DESKTOP
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 40px;
-      margin: 100px 0;
+      //width: 100vw;
+
+      @media screen and (max-width: 850px) {
+        margin: 250px 0 150px 0;
+      }
+
+      @media screen and (min-width: 850px) {
+        margin: 200px 0 150px 0;
+      }
+
       .dzenstyle {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 100px;
         color: #c3363a;
         @include font;
+        @media screen and (min-width: 650px){
+          font-size: 40px;
+        }
+        @media screen and (min-width: 850px){
+          font-size: 55px;
+        }
+        @media screen and (min-width: 1200px){
+          font-size: 100px;
+        }
+        //@media screen and (min-width: 850px){
+        //  font-size: 100px;
+        //}
+        //@media screen and (min-width: 850px){
+        //  font-size: 100px;
+        //}
+
       }
 
-      .images {
-        margin-top: 50px;
-        width: 500px;
+      .imagesP {
+        @media screen and (min-width: 650px){
+          width: 35%;
+          height: 35%;
+        }
+        @media screen and (min-width: 850px){
+          width: 36%;
+          height: 35%;
+        }
+        @media screen and (min-width: 850px){
+
+        }
+        @media screen and (min-width: 850px){
+
+        }
       }
-
-
-
     }
   }
+
   .painter__data {
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 650px) {
+      // MOBILE
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100vw;
-      background-color: hotpink;
+      width: 100%;
 
       .painter__data__photoandname {
         .image {
           width: 100%;
         }
-        .hud{
+
+        .hud {
           display: none;
         }
 
         &:before {
           content: "Художник - Р.Х. Абдульмянов";
-          margin: 0 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 10px 0;
           color: #c3363a;
           @include font;
           font-size: 25px;
         }
       }
+      .description{
+        @include font;
+        text-align: justify;
+        padding: 15px;
+        font-size: 18px;
+      }
     }
+    @media screen and (min-width: 650px){
+      width: 100%;
+      .painter__data__photoandname {
+        .painterImage__wrapper{
+          background-color: #c3363a;
+          .image {
+            display: flex;
+            width: 50%;
+            margin: 0 auto;
+
+          }
+        }
+        .hud {
+          display: none;
+        }
+
+        &:before {
+          content: "";
+
+        }
+
+        &:after {
+          content: "Художник - Р.Х. Абдульмянов";
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 10px 0;
+          color: #c3363a;
+          @include font;
+          font-size: 25px;
+        }
+      }
+
+      .description{
+        @include font;
+        text-align: justify;
+        padding: 15px;
+        font-size: 18px;
 
 
+        @media screen and (min-width: 1400px){
+          width: 1400px;
+          margin: 0 auto;
+        }
+
+
+      }
+
+    }
+    @media screen and (min-width: 850px){
+      .painter__data__photoandname {
+        .painterImage__wrapper{
+          background-color: #c3363a;
+          .image {
+            display: flex;
+            width: 35%;
+            margin: 0 auto;
+          }
+        }
+
+        .hud {
+          display: none;
+        }
+
+        //&:before {
+        //  content: "Художник - Р.Х. Абдульмянов";
+        //  display: flex;
+        //  justify-content: center;
+        //  align-items: center;
+        //  text-align: center;
+        //  padding: 10px 0;
+        //  color: #c3363a;
+        //  @include font;
+        //  font-size: 25px;
+        //}
+      }
+    }
+    @media screen and (min-width: 1200px){
+      .painter__data__photoandname {
+        .painterImage__wrapper{
+          .image {
+            width: 500px;
+          }
+        }
+      }
+    }
   }
 
 }

@@ -14,6 +14,8 @@ const Gallery = () => {
         setMenuPos(position)
     }
 
+
+
     const menuPosSwitcher = (pos) => {
         if (!pos) {
             return <Preloader/>

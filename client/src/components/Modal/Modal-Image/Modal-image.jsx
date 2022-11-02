@@ -16,19 +16,35 @@ const ModalImage = ({children, imageProps}) => {
 
 
     const setSizes = (sizes, pars = '', where = 'default') => {
-        console.log(sizes)
+
+        const screenWidth = window.screen.width
+        const screenHeight = window.screen.height
+
         if (!sizes) {
             return 0
         }
         if (where === 'default') {
-            if (pars === 'width') {
-                let width = sizes.split('x')[0]
-                return +width === 26 ? +width * 20 : +width === 70 ? +width * 8 : +width * 10
+
+            if(screenWidth >= 1100 ){
+                if (pars === 'width') {
+                    let width = sizes.split('x')[0]
+                    return +width === 26 ? +width * 20 : +width === 70 ? +width * 8 : +width * 10
+                }
+                if (pars === 'height') {
+                    let height = sizes.split('x')[1]
+                    return +height === 42 ? +height * 20 : +height === 100 ? +height * 8 : +height * 11
+                }
+            } else {
+                if (pars === 'width') {
+                    let width = sizes.split('x')[0]
+                    return +width === 26 ? +width * 10 : +width === 70 ? +width * 5 : +width * 5
+                }
+                if (pars === 'height') {
+                    let height = sizes.split('x')[1]
+                    return +height === 42 ? +height * 10 : +height === 100 ? +height * 5 : +height * 6
+                }
             }
-            if (pars === 'height') {
-                let height = sizes.split('x')[1]
-                return +height === 42 ? +height * 20 : +height === 100 ? +height * 8 : +height * 11
-            }
+
         }
 
         if (where === 'modal') {

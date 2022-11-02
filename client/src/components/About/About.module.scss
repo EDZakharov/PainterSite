@@ -8,11 +8,22 @@
 .aboutWrapper{
   width: 100%;
   height: 100vh;
+  @media screen and (max-width: 650px){
+    height: 100%;
+  }
   .about{
     @include font;
     font-size: 20PX;
-    width: 1400px;
+    padding: 20px;
+    @media screen and (min-width: 1420px){
+      padding: 0;
+      width: 1400px;
+    }
     margin: 0 auto;
     padding-top: 150px;
+    @media screen and (max-width: 650px){
+      padding-top: 0;
+    }
+
   }
 }

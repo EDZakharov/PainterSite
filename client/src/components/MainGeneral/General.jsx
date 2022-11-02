@@ -17,7 +17,9 @@ const General = () => {
             </section>
             <section className={style.painter__data}>
                 <div className={style.painter__data__photoandname}>
-                    <img className={style.image} src={photo}/>
+                    <div className={style.painterImage__wrapper}>
+                        <img className={style.image} src={photo}/>
+                    </div>
                     <span className={style.hud}>Художник - Р.Х. Абдульмянов</span>
                 </div>
                 <div className={style.description}>

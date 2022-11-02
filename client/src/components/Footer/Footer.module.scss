@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
+*{
+  margin: 0;
+  padding: 0;
+}
 
 a{
   color: #c3363a;
@@ -20,64 +24,109 @@ a{
 $grid-border: 0px solid black;
 
 .footer{
-  //background-color: greenyellow;
+
   @include font;
-  @media screen and (max-width: 400px) {
-    display: none;
+  @media screen and (max-width: 650px) {
+    // MOBILE
+    .footer__data__wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 18px;
+      .privacy{
+        margin-left: 15px;
+        padding: 20px 0;
+        align-self: start;
+        text-align: left;
+      }
+
+      .info{
+        padding: 20px 0;
+      }
+
+      .contacts{
+        padding: 20px 0;
+      }
+      .questions{
+        display: none;
+      }
+    }
+
+    .git{
+      background-color: rgb(219, 219, 220);
+
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        padding: 8px 0;
+      }
+    }
+
   }
-  font-size: 18px;
-  background: rgb(239, 240, 241);
-  background: linear-gradient(0deg,
-          rgba(239,240,241,1) 5%,
-          rgba(255,255,255,1) 100%);
 
-  .footer__data__wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    width: 1400px;
-    margin: 0 auto;
+  @media screen and (min-width: 650px){
+    //display: none;
+    // DESKTOP
+    font-size: 18px;
+    background: rgb(239, 240, 241);
+    background: linear-gradient(0deg,
+            rgba(239,240,241,1) 5%,
+            rgba(255,255,255,1) 100%);
 
-    @media screen and (max-width: 1400px){
-      //width: 100vw;
+    .footer__data__wrapper{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-items: center;
+      margin: 0 auto;
+      gap: 10px;
+      padding: 0 10px;
+      @media screen and (min-width: 1400px){
+        width: 1400px;
+      }
+
+      ul{
+        list-style-type: none;
+      }
+
+      ul li{
+        text-align: left;
+      }
+
+      .privacy{
+        border: $grid-border;
+        @include center;
+      }
+
+      .info{
+        border: $grid-border;
+        @include center;
+      }
+
+      .contacts{
+        border: $grid-border;
+        @include center;
+      }
+
+      .questions{
+        border: $grid-border;
+        @include center;
+      }
     }
-
-    ul{
-      list-style-type: none;
-    }
-
-    ul li{
-      text-align: left;
-    }
-
-    .privacy{
-      border: $grid-border;
-      @include center;
-    }
-
-    .info{
-      border: $grid-border;
-      @include center;
-    }
-
-    .gallery{
-      border: $grid-border;
-      @include center;
-    }
-
-    .dzenStyle{
-      border: $grid-border;
-      @include center;
+    .git{
+      background-color: rgb(219, 219, 220);
+      height: 100%;
+      padding: 15px 0 0 0;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: Arial,sans-serif;
     }
   }
-  .git{
-    background-color: rgb(219, 219, 220);
-    height: 100%;
-    padding: 15px 0 0 0;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: Arial,sans-serif;
-  }
+
 }

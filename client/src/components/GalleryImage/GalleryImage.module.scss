@@ -7,6 +7,13 @@
   grid-template-columns: 2fr 2fr;
   justify-items: center;
   margin: 35px 0;
+  gap: 10px;
+
+  @media screen and (max-width: 650px){
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
   .info{
     display: flex;
     flex-direction: column;

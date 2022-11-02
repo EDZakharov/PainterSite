@@ -20,14 +20,14 @@ const Footer = () => {
                         <li><a href="http://xn--80acdh9aghi5b0f8a.xn--p1ai/">Старая версия сайта</a></li>
                     </ul>
                 </div>
-                <div className={style.gallery}>
+                <div className={style.contacts}>
                     <ul>Контакты:
                         <li><a href="#">По вопросам сотрудничества</a></li>
                         <li><a href="#">Telegram</a></li>
                         <li><a href="#">WhatsApp</a></li>
                     </ul>
                 </div>
-                <div className={style.dzenStyle}>
+                <div className={style.questions}>
                     <ul>Часто задаваемые вопросы:
                         <li><a href="#">Что такое стиль дзен?</a></li>
                         <li><a href="#">Как приобрести работу?</a></li>

@@ -3,12 +3,17 @@
   flex-direction: column;
   min-height: 1200px; }
   .gallery .gallery__nav {
-    width: 1400px;
+    padding: 0 20px;
     margin: 0 auto; }
+    @media screen and (min-width: 1420px) {
+      .gallery .gallery__nav {
+        width: 1400px; } }
   .gallery .gallery__images__wrapper {
     display: flex;
     flex-direction: column;
-    width: 1400px;
     margin: 0 auto; }
+    @media screen and (min-width: 1420px) {
+      .gallery .gallery__images__wrapper {
+        width: 1400px; } }
 
 /*# sourceMappingURL=Gallery.module.css.map */

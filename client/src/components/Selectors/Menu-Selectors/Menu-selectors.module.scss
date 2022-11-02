@@ -7,6 +7,14 @@
 
 
 .gallery {
+
+  @media screen and (max-width: 850px){
+    margin-top: 180px;
+  }
+  @media screen and (max-width: 650px){
+    margin-top: 80px;
+  }
+
   margin-top: 150px;
   @include font;
   font-size: 18px;
@@ -15,7 +23,7 @@
     .typeList {
       .selection{
         display: flex;
-
+        align-items: center;
         span{
           margin: 0 20px 0 0;
           cursor: pointer;
