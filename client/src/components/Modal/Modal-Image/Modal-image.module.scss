@@ -26,28 +26,61 @@
 
   .modal_content_wrapper{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 20px solid rgba(104, 104, 104, 0.51);
     border-radius: 15px;
+    @media screen and (min-width: 550px){
+      min-width: 500px;
+      max-width: 550px;
+    }
+    @media screen and (min-height: 1080px){
+      max-width: 642px;
+    }
+
+
+
+    .modal_image{
+      width: 100%;
+    }
 
     .close{
-      position: absolute;
-      display: block;
-      top: 0;
-      right: -80px;
-      width: 40px;
-      height: 40px;
+       display: none;
+       @media screen and (min-width: 800px){
+         display: block;
+       }
+       position: absolute;
 
-      &:before{
-        @include close_psE;
-        transform: rotate(45deg);
-      }
-      &:after{
-        @include close_psE;
-        transform: rotate(-45deg);
-      }
-      &:hover{
-        cursor: pointer;
-      }
-    }
+       top: 0;
+       right: -80px;
+       width: 40px;
+       height: 40px;
+
+       &:before{
+         @include close_psE;
+         transform: rotate(45deg);
+       }
+       &:after{
+         @include close_psE;
+         transform: rotate(-45deg);
+       }
+       &:hover{
+         cursor: pointer;
+       }
+     }
+  }
+}
+
+.imageWrapper{
+  width: 500px;
+
+  @media screen and (max-width: 650px){
+    width: 100%;
+  }
+
+  img{
+    width: 100%;
+    object-fit: cover;
   }
 }

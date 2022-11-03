@@ -21,9 +21,6 @@ const CardWrapper = ({image}) => {
         navigateTo(`/admin/image?id=${image._id}&edit=true`)
     }
 
-
-    console.log(image)
-
     return (
         <Card name={image.name}
               imageName={image.imageName}

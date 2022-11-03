@@ -5,7 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw; }
+  width: 100vw;
+  background: #eff0f1;
+  background: linear-gradient(0deg, #eff0f1 69%, white 100%, white 5%, #eff0f1 100%); }
   @media screen and (max-width: 650px) {
     .general .welcome__images {
       display: flex;
@@ -28,9 +30,12 @@
       justify-content: center;
       align-items: center;
       gap: 40px; } }
-  @media screen and (min-width: 650px) and (max-width: 850px) {
+  @media screen and (min-width: 650px) and (max-width: 650px) {
     .general .welcome__images {
       margin: 250px 0 150px 0; } }
+  @media screen and (min-width: 650px) and (max-width: 850px) {
+    .general .welcome__images {
+      margin: 200px 0 150px 0; } }
   @media screen and (min-width: 650px) and (min-width: 850px) {
     .general .welcome__images {
       margin: 200px 0 150px 0; } }
@@ -56,10 +61,11 @@
     .general .welcome__images .imagesP {
       width: 35%;
       height: 35%; } }
-  @media screen and (min-width: 650px) and (min-width: 850px) {
+  @media screen and (min-width: 650px) and (min-width: 1200px) {
     .general .welcome__images .imagesP {
-      width: 36%;
-      height: 35%; } }
+      width: 30%;
+      height: 30%; } }
+
   @media screen and (max-width: 650px) {
     .general .painter__data {
       display: flex;

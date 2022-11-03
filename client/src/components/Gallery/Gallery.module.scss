@@ -1,10 +1,18 @@
 .gallery {
+
   display: flex;
   flex-direction: column;
   min-height: 1200px;
+  background: rgb(239, 240, 241);
+  background: linear-gradient(0deg,
+          rgba(239, 240, 241, 1) 69%,
+          rgba(255, 255, 255, 1) 100%,
+          rgba(255, 255, 255, 1) 5%,
+          rgba(239, 240, 241, 1) 100%
+  );
   .gallery__nav {
     padding: 0 20px;
-    margin:  0 auto;
+    margin:  25px auto;
     @media screen and (min-width: 1420px){
       width: 1400px;
     }

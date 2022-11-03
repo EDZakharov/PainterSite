@@ -1,10 +1,12 @@
 .gallery {
   display: flex;
   flex-direction: column;
-  min-height: 1200px; }
+  min-height: 1200px;
+  background: #eff0f1;
+  background: linear-gradient(0deg, #eff0f1 69%, white 100%, white 5%, #eff0f1 100%); }
   .gallery .gallery__nav {
     padding: 0 20px;
-    margin: 0 auto; }
+    margin: 25px auto; }
     @media screen and (min-width: 1420px) {
       .gallery .gallery__nav {
         width: 1400px; } }

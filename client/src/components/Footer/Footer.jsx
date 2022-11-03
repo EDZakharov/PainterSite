@@ -4,6 +4,12 @@ import githubIcon from '../../assets/icons8-github-30.png'
 import {Link} from "react-router-dom";
 
 const Footer = () => {
+
+    const moveToUp = () =>{
+        window.scrollTo(0, 0);
+    }
+
+
     return (
         <footer className={style.footer}>
             <section className={style.footer__data__wrapper}>
@@ -14,9 +20,9 @@ const Footer = () => {
                 </div>
                 <div className={style.info}>
                     <ul>Информация:
-                        <li><Link to="/news">Новости</Link></li>
-                        <li><Link to="/about">О художнике</Link></li>
-                        <li><Link to="/gallery">Галерея работ</Link></li>
+                        <li><Link to="/" onClick={moveToUp}>Новости</Link></li>
+                        <li><Link to="/about" onClick={moveToUp}>О художнике</Link></li>
+                        <li><Link to="/gallery" onClick={moveToUp}>Галерея работ</Link></li>
                         <li><a href="http://xn--80acdh9aghi5b0f8a.xn--p1ai/">Старая версия сайта</a></li>
                     </ul>
                 </div>
