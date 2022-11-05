@@ -8,36 +8,48 @@ const CardAdd = ({
                      onCategoriesSelectHandler,
                      onSubmitHandler,
                      fileChangeHandler,
-                     buttonHandler,
-                     buttonHandler2,
-                     textChangeHandler,
-                     onSizesSelectHandler,
-                     sizesHandler,
-                     description,
+                     inpFileHandler,
+                     inpFileHandler2,
                      name,
-                     onNameChange,
+                     setName,
+                     description,
+                     setDescription,
+                     setSizes,
+                     sizes,
                  }) => {
+
+
+
+
+
     return (
         <div className="add-card">
             <h4>Добавить изображение на сервер</h4>
             <form onSubmit={onSubmitHandler} name="image" className="add-card-form">
                 <div className="input-field">
                     <input id="image_name2" type="text" className="validate" placeholder="Введите название картины"
-                           onChange={onNameChange}
+                           onChange={(e) => {
+                               setName(e.target.value)
+                           }}
                            value={name}/>
                     <input id="image_name1" type="text" className="validate" placeholder="Введите описание картины"
-                           onChange={textChangeHandler}
+                           onChange={(e) => {
+                               setDescription(e.target.value)
+                           }}
                            value={description}/>
+                    <input id="image_name3" type="text" className="validate" placeholder="Введите размер картины"
+                           onChange={(e) => {
+                               setSizes(e.target.value)
+                           }}
+                           value={sizes}/>
                     <React_Select onCategoriesSelectHandler={onCategoriesSelectHandler}
                                   categoriesHandler={categoriesHandler}
-                                  onSizesSelectHandler={onSizesSelectHandler}
-                                  sizesHandler={sizesHandler}
                     />
                 </div>
                 <div className={style.file_load_block}>
                     <input type="file" value="" id="file" onChange={fileChangeHandler}
-                           ref={buttonHandler}/>
-                    <input type="text" defaultValue="Выберите файл..." ref={buttonHandler2}/>
+                           ref={inpFileHandler}/>
+                    <input type="text" defaultValue="Выберите файл..." ref={inpFileHandler2}/>
                 </div>
                 <button className={`btn waves-effect waves-light ${style.button}`}
                         type="submit"

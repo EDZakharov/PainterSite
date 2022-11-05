@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery, retry} from "@reduxjs/toolkit/dist/query/react";
 import PATH from "../SERV_PATH";
-import {logout, resetLocalToken, setLocalToken} from "./toolkit";
+import {logout, resetLocalToken, setLocalToken, setNews} from "./toolkit";
 import {Mutex} from 'async-mutex'
 
 const mutex = new Mutex()
@@ -24,6 +24,16 @@ export const staggeredBaseQuery = retry(fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
     await mutex.waitForUnlock()
     let result = await staggeredBaseQuery(args, api, extraOptions)
+    if(
+        (result && api.endpoint === 'getNews') ||
+        (result && api.endpoint === 'postNews') ||
+        (result && api.endpoint === 'patchNews') ||
+        (result && api.endpoint === 'deleteNews')
+    ){
+        api.dispatch(setNews(result.data))
+    }
+
+
     if (result.error && result.error.status === 409) {
         api.dispatch(logout())
     }
@@ -253,10 +263,52 @@ const workspace = api.injectEndpoints({
             invalidatesTags: ["apiData"],
             providesTags: retRes
         }),
+
+        //NEWS
+        getNews: build.query({
+            query: () => ({
+                url: 'news',
+                method: 'GET',
+            }),
+            invalidatesTags: ["apiData"],
+        }),
+        postNews: build.mutation({
+            query: (body) => ({
+                url: 'addnews',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ["apiData"],
+            providesTags: retRes
+        }),
+        patchNews: build.mutation({
+            query: (body) => {
+                console.log(body)
+                return {
+                url: 'patchnews',
+                method: 'PATCH',
+                body
+            }},
+            invalidatesTags: ["apiData"],
+            providesTags: retRes
+        }),
+        deleteNews: build.mutation({
+            query: (body) => ({
+                url: 'deletenews',
+                method: 'DELETE',
+                body
+            }),
+            invalidatesTags: ["apiData"],
+            providesTags: retRes
+        }),
     })
 })
 
 export const {
+    useDeleteNewsMutation,
+    usePatchNewsMutation,
+    useGetNewsQuery,
+    usePostNewsMutation,
     useGetOrdersQuery,
     useSetOrderMutation,
     useGetImageByCategoryNameQuery,

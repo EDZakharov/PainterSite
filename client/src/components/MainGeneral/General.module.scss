@@ -137,6 +137,7 @@
         text-align: justify;
         padding: 15px;
         font-size: 18px;
+        margin: 40px auto;
       }
     }
     @media screen and (min-width: 650px){
@@ -174,15 +175,17 @@
       }
 
       .description{
-        @include font;
+        //@include font;
         text-align: justify;
         padding: 15px;
         font-size: 18px;
+        margin: 0 auto 50px;
 
 
         @media screen and (min-width: 1400px){
           width: 1400px;
-          margin: 0 auto;
+          margin: 0 auto 50px;
+
         }
 
 

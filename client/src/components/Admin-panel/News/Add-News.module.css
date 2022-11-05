@@ -1,0 +1,14 @@
+.add__news {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .add__news .form__addnews {
+    width: 1400px;
+    display: flex;
+    flex-direction: column; }
+    .add__news .form__addnews input {
+      margin-top: 20px; }
+
+/*# sourceMappingURL=Add-News.module.css.map */

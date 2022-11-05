@@ -25,6 +25,7 @@ const AdminHeader = () => {
                         <li><Link className="nav-ul-li-span" to="/admin">Управление изображениями</Link></li>
                         <li><Link className="nav-ul-li-span" to="/admin/contacts">Управление контактами</Link></li>
                         <li><Link className="nav-ul-li-span" to="/admin/bio">Редактирование биографии</Link></li>
+                        <li><Link className="nav-ul-li-span" to="/admin/news">Управление Новостями</Link></li>
                         <li><Link className="nav-ul-li-span" to="/admin/orders">Заказы (продажа картин)</Link></li>
                         <li><Link className="nav-ul-li-span" to="/painter">На сайт</Link></li>
                         <li><a className="nav-ul-li-span" onClick={onBtnClick}>Выход</a></li>

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAU;EACR,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EAEnB,yBAAc;IACZ,KAAK,EAAE,MAAM;IACb,OAAO,EAAE,IAAI;IACb,cAAc,EAAE,MAAM;IAEtB,+BAAK;MACH,UAAU,EAAE,IAAI",
+"sources": ["Add-News.module.scss"],
+"names": [],
+"file": "Add-News.module.css"
+}

@@ -59,17 +59,13 @@ const colourStyles = {
 const React_Select = ({
                           onCategoriesSelectHandler,
                           categoriesHandler,
-                          sizesHandler,
-                          onSizesSelectHandler
 }) => {
 
     const onSelectChange1 = (e) => {
         return onCategoriesSelectHandler(e)
     }
 
-    const onSelectChange2 = (e) => {
-        return onSizesSelectHandler(e)
-    }
+
 
     return (
         <div className={style.selectors}>
@@ -82,16 +78,7 @@ const React_Select = ({
                         {value: "Paper", label: "На бумаге тушью"},
                         {value: "Else", label: "Другое"},
                         {value: "Canvas", label: "На холсте маслом"},
-                    ]}/>
-            <Select styles={colourStyles}
-                    ref={sizesHandler}
-                    onChange={onSelectChange2}
-                    className={style.select}
-                    placeholder={'Выберите размер'}
-                    options={[
-                        {value: "70x100", label: "70x100"},
-                        {value: "50x70", label: "50x70"},
-                        {value: "26x42", label: "26x42"}
+                        {value: "News", label: "Новости"},
                     ]}/>
         </div>
     )

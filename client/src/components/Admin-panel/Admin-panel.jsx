@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import Contacts from "./Contacts/Contacts";
 import Bio from "./Biography/Bio";
 import Orders from "./Orders/Orders";
+import News from "./News/News";
 
 const AdminPanel = () => {
 
@@ -30,6 +31,9 @@ const AdminPanel = () => {
                 </Route>
                 <Route path="/bio" element={<RoutesOutlet/>}>
                     <Route index element={<Bio/>}/>
+                </Route>
+                <Route path="/news" element={<RoutesOutlet/>}>
+                    <Route index element={<News/>}/>
                 </Route>
             </Routes>
         </>

@@ -15,8 +15,7 @@
     .aboutWrapper {
       margin-top: 150px; } }
   .aboutWrapper .about {
-    font-family: 'Poiret One', cursive;
-    font-weight: 600;
+    text-align: justify;
     font-size: 20px;
     padding: 0 20px;
     margin: 0 auto; }

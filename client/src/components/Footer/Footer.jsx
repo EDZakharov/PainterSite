@@ -20,7 +20,7 @@ const Footer = () => {
                 </div>
                 <div className={style.info}>
                     <ul>Информация:
-                        <li><Link to="/" onClick={moveToUp}>Новости</Link></li>
+                        <li><Link to="/news" onClick={moveToUp}>Новости</Link></li>
                         <li><Link to="/about" onClick={moveToUp}>О художнике</Link></li>
                         <li><Link to="/gallery" onClick={moveToUp}>Галерея работ</Link></li>
                         <li><a href="http://xn--80acdh9aghi5b0f8a.xn--p1ai/">Старая версия сайта</a></li>

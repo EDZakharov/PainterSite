@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+.news__wrapper{
+  //font-family: 'Poiret One', cursive;
+  //font-weight: 600;
+  font-size: 20px;
+
+
+  min-height: 1200px;
+  background: rgb(239, 240, 241);
+  background: linear-gradient(0deg,
+          rgba(239, 240, 241, 1) 69%,
+          rgba(255, 255, 255, 1) 100%,
+          rgba(255, 255, 255, 1) 5%,
+          rgba(239, 240, 241, 1) 100%
+  );
+
+  @media screen and (max-width: 650px){
+
+    margin-top: 100px;
+  }
+  @media screen and (min-width: 650px){
+
+    margin-top: 200px;
+  }
+
+
+  .news{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+
+    @media screen and (max-width: 650px){
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    @media screen and (min-width: 1400px){
+      width: 1400px;
+      margin: 0 auto;
+    }
+
+    .news__image{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      span{
+        text-align: justify;
+        padding: 10px;
+      }
+      img{
+        width: 100%;
+      }
+    }
+    .news__data{
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: justify;
+
+      .data__span__bold{
+        font-size: 20px;
+        //font-style: italic;
+        font-weight: bold;
+      }
+
+    }
+
+  }
+}
+

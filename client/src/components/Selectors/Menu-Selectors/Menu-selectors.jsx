@@ -35,12 +35,12 @@ const MenuSelectors = ({menuPosChecker}) => {
         {
             id: 1, onClick: onchangeState1,
             className: link1State ? style.active : '',
-            text: 'Картины на холсте маслом'
+            text: 'Холст, масло'
         },
         {
             id: 2, onClick: onchangeState2,
             className: link2State ? style.active : '',
-            text: 'Картины на бумаге тушью'
+            text: 'Бумага, тушь'
         },
         {
             id: 3, onClick: onchangeState3,

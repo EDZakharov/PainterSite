@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 .gallery {
   margin-top: 150px;
-  font-family: 'Poiret One', cursive;
-  font-weight: 600;
   font-size: 20px; }
   @media screen and (max-width: 850px) {
     .gallery {

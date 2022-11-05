@@ -92,7 +92,8 @@
         font-weight: 600;
         text-align: justify;
         padding: 15px;
-        font-size: 18px; } }
+        font-size: 18px;
+        margin: 40px auto; } }
   @media screen and (min-width: 650px) {
     .general .painter__data {
       width: 100%; }
@@ -118,15 +119,14 @@
         font-weight: 600;
         font-size: 25px; }
       .general .painter__data .description {
-        font-family: 'Poiret One', cursive;
-        font-weight: 600;
         text-align: justify;
         padding: 15px;
-        font-size: 18px; } }
+        font-size: 18px;
+        margin: 0 auto 50px; } }
     @media screen and (min-width: 650px) and (min-width: 1400px) {
       .general .painter__data .description {
         width: 1400px;
-        margin: 0 auto; } }
+        margin: 0 auto 50px; } }
 
   @media screen and (min-width: 850px) {
     .general .painter__data .painter__data__photoandname .painterImage__wrapper {

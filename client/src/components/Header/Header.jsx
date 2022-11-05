@@ -9,14 +9,12 @@ import ModalContacts from "../Modal/Modal-contacts/Modal-contacts";
 const Header = () => {
     const {data, isLoading} = useGetContactsQuery()
     let onClickActiveStatus = ({isActive}) => (isActive ? style.active : 'inactive');
-    const [birger, setBurger] = useState(() => {
-        return window.innerWidth < 650
-    })
-    const [status, setStatus] = useState(true)
+    const [status, setStatus] = useState(false)
     let menuList = [
         {id: 1, href: '/painter', text: 'Главная'},
         {id: 2, href: '/about', text: 'О художнике'},
-        {id: 3, href: '/gallery', text: 'Галерея работ'},
+        {id: 3, href: '/gallery', text: 'Галерея'},
+        {id: 4, href: '/news', text: 'Новости'},
         // {id: 4, href: '/exposition', text: 'Онлайн выставки'},
         // {id: 5, href: '/shop', text: 'Магазин'},
     ]

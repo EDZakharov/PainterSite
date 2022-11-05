@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEE,iBAAE;EACA,UAAU,EAAE,MAAM;AAEpB,iBAAE;EACA,UAAU,EAAE,MAAM",
+"sources": ["News.module.scss"],
+"names": [],
+"file": "News.module.css"
+}

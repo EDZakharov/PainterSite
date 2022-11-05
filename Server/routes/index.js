@@ -3,6 +3,7 @@ const UserController = require('../controllers/user-controller')
 const ImageController = require('../controllers/image-controller')
 const BiographyController = require('../controllers/Biography-controlle')
 const ContactsController = require('../controllers/Contacts-controller')
+const NewsController = require('../controllers/News-controller')
 const router = new Router()
 const {body} = require('express-validator')
 const AuthMiddleware = require('../middleware/auth-middleware')
@@ -52,7 +53,18 @@ router.delete('/delete',
 router.patch('/patch',
     AuthMiddleware,
     ImageController.patch)
-
+router.get('/news',
+    // AuthMiddleware,
+    NewsController.getNews)
+router.post('/addnews',
+    // AuthMiddleware,
+    NewsController.postNews)
+router.patch('/patchnews',
+    // AuthMiddleware,
+    NewsController.patchNews)
+router.delete('/deletenews',
+    // AuthMiddleware,
+    NewsController.deleteNews)
 
 
 module.exports = router
